@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CaoCao</title>
+<script>
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') document.documentElement.classList.add('dark');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: oklch(0.98 0.008 65);
+    --bg-alt: oklch(0.94 0.012 65);
+    --fg: oklch(0.18 0.01 55);
+    --fg-muted: oklch(0.45 0.015 55);
+    --accent: oklch(0.62 0.14 45);
+    --accent-hover: oklch(0.55 0.16 45);
+    --border: oklch(0.88 0.012 65);
+    --tag-bg: oklch(0.93 0.02 55);
+    --tag-fg: oklch(0.42 0.04 55);
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  :root.dark {
+    --bg: oklch(0.15 0.01 55);
+    --bg-alt: oklch(0.19 0.012 55);
+    --fg: oklch(0.92 0.008 65);
+    --fg-muted: oklch(0.60 0.015 65);
+    --accent: oklch(0.72 0.14 45);
+    --accent-hover: oklch(0.78 0.12 45);
+    --border: oklch(0.28 0.015 55);
+    --tag-bg: oklch(0.24 0.02 55);
+    --tag-fg: oklch(0.72 0.03 55);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--fg);
+    transition: background var(--transition), color var(--transition);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 32px 100px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  .header .subtitle {
+    margin-top: 6px;
+    color: var(--fg-muted);
+    font-size: 15px;
+    font-family: var(--font-mono);
+  }
+
+  .theme-toggle {
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg);
+    transition: all var(--transition);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--accent);
+  }
+
+  .theme-toggle .icon-sun { display: none; }
+  .theme-toggle .icon-moon { display: inline; }
+  :root.dark .theme-toggle .icon-sun { display: inline; }
+  :root.dark .theme-toggle .icon-moon { display: none; }
+
+  /* Projects */
+  .projects {
+    border-top: 1px solid var(--border);
+  }
+
+  .project {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .project-number {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--fg-muted);
+    min-width: 24px;
+  }
+
+  .project-name {
+    font-weight: 700;
+    font-size: 22px;
+    text-decoration: none;
+    color: var(--fg);
+    transition: color var(--transition);
+    letter-spacing: -0.02em;
+  }
+
+  .project:hover .project-name {
+    color: var(--accent);
+  }
+
+  .project-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--fg-muted);
+  }
+
+  .lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .expand-arrow {
+    margin-left: auto;
+    font-size: 14px;
+    color: var(--fg-muted);
+    transition: transform var(--transition);
+    user-select: none;
+  }
+
+  .project.expanded .expand-arrow {
+    transform: rotate(180deg);
+  }
+
+  .project-desc {
+    margin-top: 8px;
+    margin-left: 36px;
+    color: var(--fg-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 640px;
+    text-wrap: pretty;
+  }
+
+  /* Expandable details */
+  .project-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-left: 36px;
+    margin-top: 0;
+    transition:
+      max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .project.expanded .project-details {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 16px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-fg);
+    font-size: 12px;
+    font-family: var(--font-mono);
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: all var(--transition);
+  }
+
+  .project-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .project-features li {
+    font-size: 14px;
+    color: var(--fg-muted);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .project-features li::before {
+    content: '\00B7';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--fg-muted);
+    font-size: 13px;
+    font-family: var(--font-mono);
+  }
+
+  .footer a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition);
+  }
+
+  .footer a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div>
+      <h1>CaoCao</h1>
+      <p class="subtitle">projects</p>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="icon-moon">&#9789;</span>
+      <span class="icon-sun">&#9728;</span>
+    </button>
+  </header>
+
+  <div class="projects">
+    <div class="project" onclick="toggleProject(this, event)">
+      <div class="project-header">
+        <span class="project-number">01</span>
+        <a href="https://github.com/caocaochan/moegirl-yomitan" class="project-name" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">moegirl-yomitan</a>
+        <span class="project-lang">
+          <span class="lang-dot" style="background: oklch(0.65 0.15 250)"></span>
+          Python
+        </span>
+        <span class="expand-arrow">&#9662;</span>
+      </div>
+      <p class="project-desc">Build a Yomitan term dictionary from public Moegirlpedia (萌娘百科) lead summaries. Automated weekly builds via GitHub Actions.</p>
+      <div class="project-details">
+        <div class="project-tags">
+          <span class="tag">yomitan</span>
+          <span class="tag">dictionary</span>
+          <span class="tag">moegirlpedia</span>
+          <span class="tag">cli</span>
+        </div>
+        <ul class="project-features">
+          <li>CLI with configurable batch size and concurrency</li>
+          <li>Auto-versioned builds (YYYY.MM.DD format)</li>
+          <li>Weekly CI/CD with cache restoration</li>
+          <li>Self-updating Yomitan import URL</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project" onclick="toggleProject(this, event)">
+      <div class="project-header">
+        <span class="project-number">02</span>
+        <a href="https://github.com/caocaochan/downmix_gui_scaffold" class="project-name" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">downmix_gui_scaffold</a>
+        <span class="project-lang">
+          <span class="lang-dot" style="background: oklch(0.65 0.15 250)"></span>
+          Python
+        </span>
+        <span class="expand-arrow">&#9662;</span>
+      </div>
+      <p class="project-desc">PySide6 desktop application for audio downmixing with ffmpeg. A clean GUI scaffold for audio processing workflows.</p>
+      <div class="project-details">
+        <div class="project-tags">
+          <span class="tag">pyside6</span>
+          <span class="tag">ffmpeg</span>
+          <span class="tag">audio</span>
+          <span class="tag">desktop-app</span>
+        </div>
+        <ul class="project-features">
+          <li>PySide6 native desktop GUI</li>
+          <li>ffmpeg-based audio processing</li>
+          <li>Configurable downmix settings</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="https://github.com/caocaochan" target="_blank" rel="noopener noreferrer">github.com/caocaochan</a>
+    <span>2026</span>
+  </footer>
+</div>
+
+<script>
+  document.querySelector('.theme-toggle').addEventListener('click', function () {
+    var isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+
+  function toggleProject(el, e) {
+    if (e.target.closest('a')) return;
+    el.classList.toggle('expanded');
+  }
+</script>
+</body>
+</html>
