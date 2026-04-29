@@ -89,14 +89,27 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     color: var(--fg);
     transition: all var(--transition);
-    font-size: 18px;
     flex-shrink: 0;
+  }
+
+  .theme-toggle .icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    color: currentColor;
+  }
+
+  .theme-toggle .icon-moon {
+    width: 24px;
+    height: 24px;
   }
 
   .theme-toggle:hover {
@@ -104,8 +117,8 @@
   }
 
   .theme-toggle .icon-sun { display: none; }
-  .theme-toggle .icon-moon { display: inline; }
-  :root.dark .theme-toggle .icon-sun { display: inline; }
+  .theme-toggle .icon-moon { display: block; }
+  :root.dark .theme-toggle .icon-sun { display: block; }
   :root.dark .theme-toggle .icon-moon { display: none; }
 
   /* Projects */
@@ -284,8 +297,28 @@
       <p class="subtitle">projects</p>
     </div>
     <button class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="icon-moon">&#9789;</span>
-      <span class="icon-sun">&#9728;</span>
+      <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <defs>
+          <mask id="theme-moon-mask">
+            <rect width="24" height="24" fill="white"></rect>
+            <circle cx="16.7" cy="10.1" r="6.8" fill="black"></circle>
+          </mask>
+        </defs>
+        <circle cx="12.5" cy="12" r="7.8" fill="currentColor" mask="url(#theme-moon-mask)"></circle>
+      </svg>
+      <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.25" fill="currentColor"></circle>
+        <g stroke="currentColor" stroke-linecap="round" stroke-width="1.8">
+          <line x1="12" y1="2.5" x2="12" y2="5"></line>
+          <line x1="12" y1="19" x2="12" y2="21.5"></line>
+          <line x1="2.5" y1="12" x2="5" y2="12"></line>
+          <line x1="19" y1="12" x2="21.5" y2="12"></line>
+          <line x1="5.28" y1="5.28" x2="7.05" y2="7.05"></line>
+          <line x1="16.95" y1="16.95" x2="18.72" y2="18.72"></line>
+          <line x1="16.95" y1="7.05" x2="18.72" y2="5.28"></line>
+          <line x1="5.28" y1="18.72" x2="7.05" y2="16.95"></line>
+        </g>
+      </svg>
     </button>
   </header>
 
