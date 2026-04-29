@@ -1,0 +1,16 @@
+[
+  {
+    "name": "moegirl-yomitan",
+    "url": "https://github.com/caocaochan/moegirl-yomitan",
+    "language": "Python",
+    "languageColor": "oklch(0.65 0.15 250)",
+    "description": "Build a Yomitan term dictionary from public Moegirlpedia (萌娘百科) lead summaries. Automated weekly builds via GitHub Actions.",
+    "tags": ["yomitan", "dictionary", "moegirlpedia", "cli"],
+    "features": [
+      "CLI with configurable batch size and concurrency",
+      "Auto-versioned builds (YYYY.MM.DD format)",
+      "Weekly CI/CD with cache restoration",
+      "Self-updating Yomitan import URL"
+    ]
+  }
+]

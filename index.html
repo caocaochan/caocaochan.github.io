@@ -239,6 +239,14 @@
     font-weight: 700;
   }
 
+  .projects-status {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--fg-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
   /* Footer */
   .footer {
     margin-top: 48px;
@@ -276,59 +284,8 @@
     </button>
   </header>
 
-  <div class="projects">
-    <div class="project" onclick="toggleProject(this, event)">
-      <div class="project-header">
-        <span class="project-number">01</span>
-        <a href="https://github.com/caocaochan/moegirl-yomitan" class="project-name" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">moegirl-yomitan</a>
-        <span class="project-lang">
-          <span class="lang-dot" style="background: oklch(0.65 0.15 250)"></span>
-          Python
-        </span>
-        <span class="expand-arrow">&#9662;</span>
-      </div>
-      <p class="project-desc">Build a Yomitan term dictionary from public Moegirlpedia (萌娘百科) lead summaries. Automated weekly builds via GitHub Actions.</p>
-      <div class="project-details">
-        <div class="project-tags">
-          <span class="tag">yomitan</span>
-          <span class="tag">dictionary</span>
-          <span class="tag">moegirlpedia</span>
-          <span class="tag">cli</span>
-        </div>
-        <ul class="project-features">
-          <li>CLI with configurable batch size and concurrency</li>
-          <li>Auto-versioned builds (YYYY.MM.DD format)</li>
-          <li>Weekly CI/CD with cache restoration</li>
-          <li>Self-updating Yomitan import URL</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="project" onclick="toggleProject(this, event)">
-      <div class="project-header">
-        <span class="project-number">02</span>
-        <a href="https://github.com/caocaochan/downmix_gui_scaffold" class="project-name" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">downmix_gui_scaffold</a>
-        <span class="project-lang">
-          <span class="lang-dot" style="background: oklch(0.65 0.15 250)"></span>
-          Python
-        </span>
-        <span class="expand-arrow">&#9662;</span>
-      </div>
-      <p class="project-desc">PySide6 desktop application for audio downmixing with ffmpeg. A clean GUI scaffold for audio processing workflows.</p>
-      <div class="project-details">
-        <div class="project-tags">
-          <span class="tag">pyside6</span>
-          <span class="tag">ffmpeg</span>
-          <span class="tag">audio</span>
-          <span class="tag">desktop-app</span>
-        </div>
-        <ul class="project-features">
-          <li>PySide6 native desktop GUI</li>
-          <li>ffmpeg-based audio processing</li>
-          <li>Configurable downmix settings</li>
-        </ul>
-      </div>
-    </div>
+  <div class="projects" id="projects-list">
+    <p class="projects-status">Loading projects...</p>
   </div>
 
   <footer class="footer">
@@ -338,15 +295,112 @@
 </div>
 
 <script>
+  var projectsList = document.getElementById('projects-list');
+
   document.querySelector('.theme-toggle').addEventListener('click', function () {
     var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 
+  function createElement(tagName, className, text) {
+    var el = document.createElement(tagName);
+    if (className) el.className = className;
+    if (text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  function formatProjectNumber(index) {
+    return String(index + 1).padStart(2, '0');
+  }
+
+  function renderProject(project, index) {
+    var article = createElement('div', 'project');
+    article.addEventListener('click', function (event) {
+      toggleProject(article, event);
+    });
+
+    var header = createElement('div', 'project-header');
+
+    header.appendChild(createElement('span', 'project-number', formatProjectNumber(index)));
+
+    var nameLink = createElement('a', 'project-name', project.name);
+    nameLink.href = project.url;
+    nameLink.target = '_blank';
+    nameLink.rel = 'noopener noreferrer';
+    header.appendChild(nameLink);
+
+    var lang = createElement('span', 'project-lang');
+    var langDot = createElement('span', 'lang-dot');
+    langDot.style.background = project.languageColor;
+    lang.appendChild(langDot);
+    lang.appendChild(document.createTextNode(project.language));
+    header.appendChild(lang);
+
+    header.appendChild(createElement('span', 'expand-arrow', '\u25BE'));
+    article.appendChild(header);
+
+    article.appendChild(createElement('p', 'project-desc', project.description));
+
+    var details = createElement('div', 'project-details');
+
+    var tags = createElement('div', 'project-tags');
+    project.tags.forEach(function (tag) {
+      tags.appendChild(createElement('span', 'tag', tag));
+    });
+    details.appendChild(tags);
+
+    var features = createElement('ul', 'project-features');
+    project.features.forEach(function (feature) {
+      features.appendChild(createElement('li', '', feature));
+    });
+    details.appendChild(features);
+
+    article.appendChild(details);
+    return article;
+  }
+
+  function renderProjects(projects) {
+    projectsList.replaceChildren();
+
+    if (!Array.isArray(projects) || projects.length === 0) {
+      projectsList.appendChild(createElement('p', 'projects-status', 'No projects yet.'));
+      return;
+    }
+
+    projects.forEach(function (project, index) {
+      projectsList.appendChild(renderProject(project, index));
+    });
+  }
+
+  function showProjectsError(message) {
+    projectsList.replaceChildren(createElement('p', 'projects-status', message));
+  }
+
+  async function loadProjects() {
+    try {
+      var response = await fetch('./projects.json', { cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error('HTTP ' + response.status);
+      }
+
+      var projects = await response.json();
+      if (!Array.isArray(projects)) {
+        throw new Error('Invalid projects format');
+      }
+
+      renderProjects(projects);
+    } catch (error) {
+      showProjectsError('Projects could not be loaded right now. Please try again later.');
+      console.error('Failed to load projects:', error);
+    }
+  }
+
   function toggleProject(el, e) {
     if (e.target.closest('a')) return;
     el.classList.toggle('expanded');
   }
+
+  loadProjects();
 </script>
 </body>
 </html>
