@@ -460,11 +460,13 @@
     });
     details.appendChild(tags);
 
-    var features = createElement('ul', 'project-features');
-    project.features.forEach(function (feature) {
-      features.appendChild(createElement('li', '', feature));
-    });
-    details.appendChild(features);
+    if (Array.isArray(project.features) && project.features.length > 0) {
+      var features = createElement('ul', 'project-features');
+      project.features.forEach(function (feature) {
+        features.appendChild(createElement('li', '', feature));
+      });
+      details.appendChild(features);
+    }
 
     if (project.scriptsManifestUrl) {
       var scriptsSection = createElement('section', 'project-scripts');
