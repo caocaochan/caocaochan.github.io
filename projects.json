@@ -12,5 +12,19 @@
       "Weekly CI/CD with cache restoration",
       "Self-updating Yomitan import URL"
     ]
+  },
+  {
+    "name": "userscripts",
+    "url": "https://github.com/caocaochan/userscripts",
+    "language": "JavaScript",
+    "languageColor": "oklch(0.68 0.16 75)",
+    "description": "A shared collection of browser userscripts with direct install links and a repo manifest that feeds this site.",
+    "tags": ["tampermonkey", "userscripts", "browser", "automation"],
+    "features": [
+      "Installable .user.js scripts hosted from a dedicated repo",
+      "Repo-level manifest powers script listings on this website",
+      "Designed so new scripts appear here without extra site code changes"
+    ],
+    "scriptsManifestUrl": "https://raw.githubusercontent.com/caocaochan/userscripts/main/manifest.json"
   }
 ]

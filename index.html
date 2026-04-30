@@ -216,7 +216,7 @@
   }
 
   .project.expanded .project-details {
-    max-height: 300px;
+    max-height: 720px;
     opacity: 1;
     margin-top: 16px;
   }
@@ -258,6 +258,74 @@
     left: 0;
     color: var(--accent);
     font-weight: 700;
+  }
+
+  .project-scripts {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+
+  .project-scripts-title {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 12px;
+  }
+
+  .project-scripts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .project-script {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-alt);
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .project-script:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .project-script-name {
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    width: fit-content;
+  }
+
+  .project-script-name:hover {
+    color: var(--accent);
+  }
+
+  .project-script-desc,
+  .scripts-status {
+    color: var(--fg-muted);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .project-script-source {
+    color: var(--fg-muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    width: fit-content;
+  }
+
+  .project-script-source:hover {
+    color: var(--accent);
   }
 
   .projects-status {
@@ -338,6 +406,7 @@
 
 <script>
   var projectsList = document.getElementById('projects-list');
+  var scriptsManifestCache = new Map();
 
   document.querySelector('.theme-toggle').addEventListener('click', function () {
     var isDark = document.documentElement.classList.toggle('dark');
@@ -358,7 +427,7 @@
   function renderProject(project, index) {
     var article = createElement('div', 'project');
     article.addEventListener('click', function (event) {
-      toggleProject(article, event);
+      toggleProject(article, project, event);
     });
 
     var header = createElement('div', 'project-header');
@@ -396,6 +465,14 @@
       features.appendChild(createElement('li', '', feature));
     });
     details.appendChild(features);
+
+    if (project.scriptsManifestUrl) {
+      var scriptsSection = createElement('section', 'project-scripts');
+      scriptsSection.hidden = true;
+      scriptsSection.appendChild(createElement('p', 'project-scripts-title', 'Scripts'));
+      scriptsSection.appendChild(createElement('div', 'scripts-status', 'Expand to load scripts...'));
+      details.appendChild(scriptsSection);
+    }
 
     article.appendChild(details);
     return article;
@@ -437,9 +514,101 @@
     }
   }
 
-  function toggleProject(el, e) {
+  async function loadProjectScripts(project, article) {
+    if (!project.scriptsManifestUrl) {
+      return;
+    }
+
+    var section = article.querySelector('.project-scripts');
+    if (!section || section.dataset.loaded === 'true' || section.dataset.loading === 'true') {
+      return;
+    }
+
+    section.hidden = false;
+    section.dataset.loading = 'true';
+    renderScriptsStatus(section, 'Loading scripts...');
+
+    try {
+      var scripts = await getProjectScripts(project.scriptsManifestUrl);
+      renderProjectScripts(section, scripts);
+      section.dataset.loaded = 'true';
+    } catch (error) {
+      renderScriptsStatus(section, 'Scripts could not be loaded right now.');
+      console.error('Failed to load scripts manifest:', error);
+    } finally {
+      delete section.dataset.loading;
+    }
+  }
+
+  async function getProjectScripts(url) {
+    if (scriptsManifestCache.has(url)) {
+      return scriptsManifestCache.get(url);
+    }
+
+    var response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error('HTTP ' + response.status);
+    }
+
+    var manifest = await response.json();
+    if (!manifest || !Array.isArray(manifest.scripts)) {
+      throw new Error('Invalid scripts manifest');
+    }
+
+    scriptsManifestCache.set(url, manifest.scripts);
+    return manifest.scripts;
+  }
+
+  function renderScriptsStatus(section, message) {
+    section.replaceChildren(
+      createElement('p', 'project-scripts-title', 'Scripts'),
+      createElement('div', 'scripts-status', message)
+    );
+  }
+
+  function renderProjectScripts(section, scripts) {
+    section.replaceChildren();
+    section.appendChild(createElement('p', 'project-scripts-title', 'Scripts'));
+
+    if (!scripts.length) {
+      section.appendChild(createElement('div', 'scripts-status', 'No scripts listed yet.'));
+      return;
+    }
+
+    var list = createElement('div', 'project-scripts-list');
+
+    scripts.forEach(function (script) {
+      var item = createElement('article', 'project-script');
+
+      var installLink = createElement('a', 'project-script-name', script.name || 'Unnamed script');
+      installLink.href = script.installUrl;
+      installLink.target = '_blank';
+      installLink.rel = 'noopener noreferrer';
+      item.appendChild(installLink);
+
+      item.appendChild(createElement('p', 'project-script-desc', script.description || ''));
+
+      if (script.sourceUrl) {
+        var sourceLink = createElement('a', 'project-script-source', 'source');
+        sourceLink.href = script.sourceUrl;
+        sourceLink.target = '_blank';
+        sourceLink.rel = 'noopener noreferrer';
+        item.appendChild(sourceLink);
+      }
+
+      list.appendChild(item);
+    });
+
+    section.appendChild(list);
+  }
+
+  function toggleProject(el, project, e) {
     if (e.target.closest('a')) return;
     el.classList.toggle('expanded');
+
+    if (el.classList.contains('expanded')) {
+      loadProjectScripts(project, el);
+    }
   }
 
   loadProjects();
