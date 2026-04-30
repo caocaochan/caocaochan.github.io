@@ -18,7 +18,7 @@
     "url": "https://github.com/caocaochan/userscripts",
     "language": "JavaScript",
     "languageColor": "oklch(0.68 0.16 75)",
-    "description": "A shared collection of browser userscripts with direct install links and a repo manifest that feeds this site.",
+    "description": "Collection of my userscripts.",
     "tags": ["tampermonkey", "userscripts", "browser", "automation"],
     "features": [],
     "scriptsManifestUrl": "https://raw.githubusercontent.com/caocaochan/userscripts/main/manifest.json"
