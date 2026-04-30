@@ -299,14 +299,8 @@
 
   .project-script-name {
     color: var(--fg);
-    text-decoration: none;
     font-weight: 700;
     font-size: 15px;
-    width: fit-content;
-  }
-
-  .project-script-name:hover {
-    color: var(--accent);
   }
 
   .project-script-desc,
@@ -316,7 +310,14 @@
     line-height: 1.55;
   }
 
-  .project-script-source {
+  .project-script-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 2px;
+  }
+
+  .project-script-action {
     color: var(--fg-muted);
     text-decoration: none;
     font-size: 12px;
@@ -324,7 +325,7 @@
     width: fit-content;
   }
 
-  .project-script-source:hover {
+  .project-script-action:hover {
     color: var(--accent);
   }
 
@@ -582,20 +583,30 @@
     scripts.forEach(function (script) {
       var item = createElement('article', 'project-script');
 
-      var installLink = createElement('a', 'project-script-name', script.name || 'Unnamed script');
-      installLink.href = script.installUrl;
-      installLink.target = '_blank';
-      installLink.rel = 'noopener noreferrer';
-      item.appendChild(installLink);
+      item.appendChild(createElement('div', 'project-script-name', script.name || 'Unnamed script'));
 
       item.appendChild(createElement('p', 'project-script-desc', script.description || ''));
 
+      var actions = createElement('div', 'project-script-actions');
+
+      if (script.installUrl) {
+        var installLink = createElement('a', 'project-script-action', 'install');
+        installLink.href = script.installUrl;
+        installLink.target = '_blank';
+        installLink.rel = 'noopener noreferrer';
+        actions.appendChild(installLink);
+      }
+
       if (script.sourceUrl) {
-        var sourceLink = createElement('a', 'project-script-source', 'source');
+        var sourceLink = createElement('a', 'project-script-action', 'source');
         sourceLink.href = script.sourceUrl;
         sourceLink.target = '_blank';
         sourceLink.rel = 'noopener noreferrer';
-        item.appendChild(sourceLink);
+        actions.appendChild(sourceLink);
+      }
+
+      if (actions.childNodes.length > 0) {
+        item.appendChild(actions);
       }
 
       list.appendChild(item);
