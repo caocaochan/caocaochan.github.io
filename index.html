@@ -32,6 +32,13 @@
     --font-sans: 'DM Sans', system-ui, sans-serif;
     --font-mono: 'DM Mono', monospace;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --accordion-duration-open: 240ms;
+    --accordion-duration-close: 180ms;
+    --accordion-content-duration: 180ms;
+    --accordion-arrow-duration: 170ms;
+    --accordion-ease-open: cubic-bezier(0.2, 0.9, 0.24, 1);
+    --accordion-ease-close: cubic-bezier(0.4, 0, 0.7, 1);
+    --accordion-offset: 10px;
   }
 
   :root.dark {
@@ -130,7 +137,7 @@
   .project {
     padding: 28px 0;
     border-bottom: 1px solid var(--border);
-    transition: all var(--transition);
+    transition: border-color var(--transition), background var(--transition);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
   }
@@ -182,14 +189,23 @@
 
   .expand-arrow {
     margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 14px;
     color: var(--fg-muted);
-    transition: transform var(--transition);
+    transform: translateY(1px) rotate(0deg) scale(1);
+    transform-origin: 50% 45%;
+    transition:
+      transform var(--accordion-arrow-duration) cubic-bezier(0.22, 1, 0.36, 1),
+      color var(--accordion-arrow-duration) ease;
     user-select: none;
   }
 
+  .project.expanding .expand-arrow,
   .project.expanded .expand-arrow {
-    transform: rotate(180deg);
+    color: var(--accent);
+    transform: translateY(1px) rotate(180deg) scale(0.9);
   }
 
   .project-desc {
@@ -204,21 +220,47 @@
 
   /* Expandable details */
   .project-details {
-    max-height: 0;
+    height: 0;
     overflow: hidden;
-    opacity: 0;
     margin-left: 36px;
-    margin-top: 0;
-    transition:
-      max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    pointer-events: none;
+    will-change: height;
+    transition-property: height;
+    transition-duration: var(--accordion-duration-open);
+    transition-timing-function: var(--accordion-ease-open);
   }
 
+  .project.expanding .project-details,
+  .project.expanded .project-details,
+  .project.collapsing .project-details {
+    visibility: visible;
+  }
+
+  .project.expanding .project-details,
   .project.expanded .project-details {
-    max-height: 720px;
+    pointer-events: auto;
+  }
+
+  .project.collapsing .project-details {
+    transition-duration: var(--accordion-duration-close);
+    transition-timing-function: var(--accordion-ease-close);
+  }
+
+  .project-details-inner {
+    padding-top: 16px;
+    opacity: 0;
+    transform: translateY(calc(var(--accordion-offset) * -1));
+    transition:
+      transform var(--accordion-content-duration) cubic-bezier(0.2, 0.9, 0.24, 1),
+      opacity 140ms ease;
+    will-change: transform, opacity;
+  }
+
+  .project.expanding .project-details-inner,
+  .project.expanded .project-details-inner {
     opacity: 1;
-    margin-top: 16px;
+    transform: translateY(0);
   }
 
   .project-tags {
@@ -329,6 +371,16 @@
     color: var(--accent);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --accordion-duration-open: 1ms;
+      --accordion-duration-close: 1ms;
+      --accordion-content-duration: 1ms;
+      --accordion-arrow-duration: 1ms;
+      --accordion-offset: 0px;
+    }
+  }
+
   .projects-status {
     padding: 28px 0;
     border-bottom: 1px solid var(--border);
@@ -408,6 +460,7 @@
 <script>
   var projectsList = document.getElementById('projects-list');
   var scriptsManifestCache = new Map();
+  var activeProjectArticle = null;
 
   document.querySelector('.theme-toggle').addEventListener('click', function () {
     var isDark = document.documentElement.classList.toggle('dark');
@@ -454,19 +507,20 @@
     article.appendChild(createElement('p', 'project-desc', project.description));
 
     var details = createElement('div', 'project-details');
+    var detailsInner = createElement('div', 'project-details-inner');
 
     var tags = createElement('div', 'project-tags');
     project.tags.forEach(function (tag) {
       tags.appendChild(createElement('span', 'tag', tag));
     });
-    details.appendChild(tags);
+    detailsInner.appendChild(tags);
 
     if (Array.isArray(project.features) && project.features.length > 0) {
       var features = createElement('ul', 'project-features');
       project.features.forEach(function (feature) {
         features.appendChild(createElement('li', '', feature));
       });
-      details.appendChild(features);
+      detailsInner.appendChild(features);
     }
 
     if (project.scriptsManifestUrl) {
@@ -474,14 +528,16 @@
       scriptsSection.hidden = true;
       scriptsSection.appendChild(createElement('p', 'project-scripts-title', 'Scripts'));
       scriptsSection.appendChild(createElement('div', 'scripts-status', 'Expand to load scripts...'));
-      details.appendChild(scriptsSection);
+      detailsInner.appendChild(scriptsSection);
     }
 
+    details.appendChild(detailsInner);
     article.appendChild(details);
     return article;
   }
 
   function renderProjects(projects) {
+    activeProjectArticle = null;
     projectsList.replaceChildren();
 
     if (!Array.isArray(projects) || projects.length === 0) {
@@ -530,13 +586,16 @@
     section.hidden = false;
     section.dataset.loading = 'true';
     renderScriptsStatus(section, 'Loading scripts...');
+    syncExpandedHeight(article);
 
     try {
       var scripts = await getProjectScripts(project.scriptsManifestUrl);
       renderProjectScripts(section, scripts);
       section.dataset.loaded = 'true';
+      syncExpandedHeight(article);
     } catch (error) {
       renderScriptsStatus(section, 'Scripts could not be loaded right now.');
+      syncExpandedHeight(article);
       console.error('Failed to load scripts manifest:', error);
     } finally {
       delete section.dataset.loading;
@@ -615,14 +674,191 @@
     section.appendChild(list);
   }
 
+  function parseTimeValue(value) {
+    var trimmed = value.trim();
+
+    if (trimmed.endsWith('ms')) {
+      return parseFloat(trimmed);
+    }
+
+    if (trimmed.endsWith('s')) {
+      return parseFloat(trimmed) * 1000;
+    }
+
+    return 0;
+  }
+
+  function getTransitionTime(element) {
+    var styles = window.getComputedStyle(element);
+    var durations = styles.transitionDuration.split(',');
+    var delays = styles.transitionDelay.split(',');
+    var total = 0;
+
+    for (var i = 0; i < durations.length; i += 1) {
+      var duration = parseTimeValue(durations[i] || '0s');
+      var delay = parseTimeValue(delays[i] || delays[delays.length - 1] || '0s');
+      total = Math.max(total, duration + delay);
+    }
+
+    return total;
+  }
+
+  function getProjectDetails(article) {
+    return article.querySelector('.project-details');
+  }
+
+  function cancelHeightTransition(details) {
+    if (details._heightTransitionHandler) {
+      details.removeEventListener('transitionend', details._heightTransitionHandler);
+      details._heightTransitionHandler = null;
+    }
+
+    if (details._heightTransitionTimer) {
+      window.clearTimeout(details._heightTransitionTimer);
+      details._heightTransitionTimer = null;
+    }
+  }
+
+  function finishHeightTransition(article, onDone) {
+    var details = getProjectDetails(article);
+
+    if (!details) {
+      return;
+    }
+
+    cancelHeightTransition(details);
+
+    var finished = false;
+
+    function cleanup() {
+      if (finished) {
+        return;
+      }
+
+      finished = true;
+      cancelHeightTransition(details);
+      onDone();
+    }
+
+    details._heightTransitionHandler = function (event) {
+      if (event.target !== details || event.propertyName !== 'height') {
+        return;
+      }
+
+      cleanup();
+    };
+
+    details.addEventListener('transitionend', details._heightTransitionHandler);
+    details._heightTransitionTimer = window.setTimeout(cleanup, getTransitionTime(details) + 80);
+  }
+
+  function openProject(article) {
+    var details = getProjectDetails(article);
+
+    if (!details) {
+      return;
+    }
+
+    cancelHeightTransition(details);
+    article.classList.remove('collapsing');
+    article.classList.add('expanded');
+
+    var startHeight = details.getBoundingClientRect().height;
+    details.style.height = startHeight + 'px';
+    article.classList.add('expanding');
+
+    details.offsetHeight;
+    details.style.height = details.scrollHeight + 'px';
+
+    finishHeightTransition(article, function () {
+      article.classList.remove('expanding');
+
+      if (article.classList.contains('expanded')) {
+        details.style.height = 'auto';
+      }
+    });
+  }
+
+  function closeProject(article) {
+    var details = getProjectDetails(article);
+
+    if (!details) {
+      return;
+    }
+
+    cancelHeightTransition(details);
+
+    var startHeight = details.getBoundingClientRect().height || details.scrollHeight;
+    details.style.height = startHeight + 'px';
+    article.classList.remove('expanding');
+    article.classList.add('collapsing');
+
+    details.offsetHeight;
+    article.classList.remove('expanded');
+    details.style.height = '0px';
+
+    finishHeightTransition(article, function () {
+      article.classList.remove('collapsing');
+      details.style.height = '';
+    });
+  }
+
+  function syncExpandedHeight(article) {
+    if (!article || (!article.classList.contains('expanded') && !article.classList.contains('expanding'))) {
+      return;
+    }
+
+    var details = getProjectDetails(article);
+
+    if (!details) {
+      return;
+    }
+
+    cancelHeightTransition(details);
+
+    var startHeight = details.getBoundingClientRect().height;
+    details.style.height = startHeight + 'px';
+
+    details.offsetHeight;
+
+    var targetHeight = details.scrollHeight;
+
+    if (Math.abs(targetHeight - startHeight) < 1) {
+      if (article.classList.contains('expanded') && !article.classList.contains('expanding')) {
+        details.style.height = 'auto';
+      }
+      return;
+    }
+
+    article.classList.add('expanding');
+    details.style.height = targetHeight + 'px';
+
+    finishHeightTransition(article, function () {
+      article.classList.remove('expanding');
+
+      if (article.classList.contains('expanded')) {
+        details.style.height = 'auto';
+      }
+    });
+  }
+
   function toggleProject(el, project, e) {
     if (e.target.closest('a')) return;
     if (e.target.closest('.project-details')) return;
-    el.classList.toggle('expanded');
 
-    if (el.classList.contains('expanded')) {
-      loadProjectScripts(project, el);
+    if (activeProjectArticle === el) {
+      closeProject(el);
+      activeProjectArticle = null;
+      return;
     }
+
+    if (activeProjectArticle) {
+      closeProject(activeProjectArticle);
+    }
+
+    activeProjectArticle = el;
+    openProject(el);
+    loadProjectScripts(project, el);
   }
 
   loadProjects();
