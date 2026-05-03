@@ -15,7 +15,7 @@
   },
   {
     "name": "CalibreAnalyzer",
-    "url": "https://github.com/caocaochan/CalibreAnalyzer",
+    "url": "https://github.com/caocaochan/CalibreAnalyzer/releases/latest",
     "language": "Python",
     "languageColor": "oklch(0.65 0.15 250)",
     "description": "Calibre plugin for analyzing Chinese books by character or word, with HSK coverage, optional Anki comparison, and bundled offline word segmentation runtimes.",
