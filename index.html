@@ -464,6 +464,7 @@
 <script>
   var projectsList = document.getElementById('projects-list');
   var scriptsManifestCache = new Map();
+  var releaseVersionCache = new Map();
   var activeProjectArticle = null;
 
   document.querySelector('.theme-toggle').addEventListener('click', function () {
@@ -502,8 +503,13 @@
     var langDot = createElement('span', 'lang-dot');
     langDot.style.background = project.languageColor;
     lang.appendChild(langDot);
-    lang.appendChild(document.createTextNode(project.language));
+    var langText = document.createTextNode(project.releaseRepo ? 'Loading...' : project.language);
+    lang.appendChild(langText);
     header.appendChild(lang);
+
+    if (project.releaseRepo) {
+      loadProjectReleaseVersion(project, langText);
+    }
 
     header.appendChild(createElement('span', 'expand-arrow', '\u25BE'));
     article.appendChild(header);
@@ -556,6 +562,34 @@
 
   function showProjectsError(message) {
     projectsList.replaceChildren(createElement('p', 'projects-status', message));
+  }
+
+  async function loadProjectReleaseVersion(project, textNode) {
+    try {
+      textNode.nodeValue = await getLatestReleaseVersion(project.releaseRepo);
+    } catch (error) {
+      textNode.nodeValue = 'Release unavailable';
+      console.error('Failed to load latest release for ' + project.releaseRepo + ':', error);
+    }
+  }
+
+  async function getLatestReleaseVersion(releaseRepo) {
+    if (releaseVersionCache.has(releaseRepo)) {
+      return releaseVersionCache.get(releaseRepo);
+    }
+
+    var response = await fetch('https://api.github.com/repos/' + releaseRepo + '/releases/latest', { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error('HTTP ' + response.status);
+    }
+
+    var release = await response.json();
+    if (!release || typeof release.tag_name !== 'string' || release.tag_name.length === 0) {
+      throw new Error('Invalid release format');
+    }
+
+    releaseVersionCache.set(releaseRepo, release.tag_name);
+    return release.tag_name;
   }
 
   async function loadProjects() {

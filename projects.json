@@ -4,6 +4,7 @@
     "url": "https://github.com/caocaochan/moegirl-yomitan",
     "language": "Python",
     "languageColor": "oklch(0.65 0.15 250)",
+    "releaseRepo": "caocaochan/moegirl-yomitan",
     "description": "Build a Yomitan term dictionary from public Moegirlpedia (萌娘百科) lead summaries. Automated weekly builds via GitHub Actions.",
     "tags": ["yomitan", "dictionary", "moegirlpedia", "cli"],
     "features": [
@@ -18,6 +19,7 @@
     "url": "https://github.com/caocaochan/CalibreAnalyzer/releases/latest",
     "language": "Python",
     "languageColor": "oklch(0.65 0.15 250)",
+    "releaseRepo": "caocaochan/CalibreAnalyzer",
     "description": "Calibre plugin for analyzing Chinese books by character or word, with HSK coverage, optional Anki comparison, and bundled offline word segmentation runtimes.",
     "tags": ["calibre", "plugin", "chinese", "anki"],
     "features": [
