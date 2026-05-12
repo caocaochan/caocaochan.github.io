@@ -343,10 +343,24 @@
     transform: translateY(-1px);
   }
 
+  .project-script-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
   .project-script-name {
     color: var(--fg);
     font-weight: 700;
     font-size: 15px;
+  }
+
+  .project-script-version {
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
   }
 
   .project-script-desc,
@@ -465,6 +479,7 @@
   var projectsList = document.getElementById('projects-list');
   var scriptsManifestCache = new Map();
   var releaseVersionCache = new Map();
+  var userscriptVersionCache = new Map();
   var activeProjectArticle = null;
 
   document.querySelector('.theme-toggle').addEventListener('click', function () {
@@ -628,7 +643,7 @@
 
     try {
       var scripts = await getProjectScripts(project.scriptsManifestUrl);
-      renderProjectScripts(section, scripts);
+      renderProjectScripts(section, scripts, article);
       section.dataset.loaded = 'true';
       syncExpandedHeight(article);
     } catch (error) {
@@ -666,7 +681,53 @@
     );
   }
 
-  function renderProjectScripts(section, scripts) {
+  async function loadUserscriptVersion(script, label, article) {
+    try {
+      label.textContent = await getUserscriptVersion(script.installUrl);
+    } catch (error) {
+      label.textContent = 'Version unavailable';
+      console.error('Failed to load userscript version for ' + (script.installUrl || script.name || 'unknown script') + ':', error);
+    } finally {
+      syncExpandedHeight(article);
+    }
+  }
+
+  async function getUserscriptVersion(installUrl) {
+    if (!installUrl) {
+      throw new Error('Missing install URL');
+    }
+
+    if (userscriptVersionCache.has(installUrl)) {
+      return userscriptVersionCache.get(installUrl);
+    }
+
+    var response = await fetch(installUrl, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error('HTTP ' + response.status);
+    }
+
+    var source = await response.text();
+    var version = extractUserscriptVersion(source);
+    userscriptVersionCache.set(installUrl, version);
+    return version;
+  }
+
+  function extractUserscriptVersion(source) {
+    var metadata = source.match(/\/\/ ==UserScript==([\s\S]*?)\/\/ ==\/UserScript==/);
+    if (!metadata) {
+      throw new Error('Missing userscript metadata block');
+    }
+
+    var version = metadata[1].match(/^\s*\/\/\s*@version\s+(.+?)\s*$/m);
+    if (!version || !version[1]) {
+      throw new Error('Missing userscript version');
+    }
+
+    var value = version[1].trim();
+    return value.charAt(0).toLowerCase() === 'v' ? value : 'v' + value;
+  }
+
+  function renderProjectScripts(section, scripts, article) {
     section.replaceChildren();
     section.appendChild(createElement('p', 'project-scripts-title', 'Scripts'));
 
@@ -680,7 +741,13 @@
     scripts.forEach(function (script) {
       var item = createElement('article', 'project-script');
 
-      item.appendChild(createElement('div', 'project-script-name', script.name || 'Unnamed script'));
+      var titleRow = createElement('div', 'project-script-title-row');
+      titleRow.appendChild(createElement('div', 'project-script-name', script.name || 'Unnamed script'));
+      var versionText = createElement('span', 'project-script-version', 'Loading...');
+      titleRow.appendChild(versionText);
+      item.appendChild(titleRow);
+
+      loadUserscriptVersion(script, versionText, article);
 
       item.appendChild(createElement('p', 'project-script-desc', script.description || ''));
 
