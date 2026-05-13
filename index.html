@@ -761,6 +761,14 @@
         actions.appendChild(installLink);
       }
 
+      if (script.handlerUrl) {
+        var handlerLink = createElement('a', 'project-script-action', 'handler');
+        handlerLink.href = script.handlerUrl;
+        handlerLink.target = '_blank';
+        handlerLink.rel = 'noopener noreferrer';
+        actions.appendChild(handlerLink);
+      }
+
       if (script.sourceUrl) {
         var sourceLink = createElement('a', 'project-script-action', 'source');
         sourceLink.href = script.sourceUrl;
