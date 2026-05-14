@@ -480,6 +480,7 @@
   var scriptsManifestCache = new Map();
   var releaseVersionCache = new Map();
   var userscriptVersionCache = new Map();
+  var remoteCacheTtlMs = 60 * 1000;
   var activeProjectArticle = null;
 
   document.querySelector('.theme-toggle').addEventListener('click', function () {
@@ -589,8 +590,9 @@
   }
 
   async function getLatestReleaseVersion(releaseRepo) {
-    if (releaseVersionCache.has(releaseRepo)) {
-      return releaseVersionCache.get(releaseRepo);
+    var cachedVersion = getTimedCacheValue(releaseVersionCache, releaseRepo);
+    if (cachedVersion) {
+      return cachedVersion;
     }
 
     var response = await fetch('https://api.github.com/repos/' + releaseRepo + '/releases/latest', { cache: 'no-store' });
@@ -603,7 +605,7 @@
       throw new Error('Invalid release format');
     }
 
-    releaseVersionCache.set(releaseRepo, release.tag_name);
+    setTimedCacheValue(releaseVersionCache, releaseRepo, release.tag_name);
     return release.tag_name;
   }
 
@@ -632,19 +634,25 @@
     }
 
     var section = article.querySelector('.project-scripts');
-    if (!section || section.dataset.loaded === 'true' || section.dataset.loading === 'true') {
+    if (!section || section.dataset.loading === 'true') {
+      return;
+    }
+
+    var loadedAt = Number(section.dataset.loadedAt || 0);
+    if (section.dataset.loaded === 'true' && Date.now() - loadedAt < remoteCacheTtlMs) {
       return;
     }
 
     section.hidden = false;
     section.dataset.loading = 'true';
-    renderScriptsStatus(section, 'Loading scripts...');
+    renderScriptsStatus(section, section.dataset.loaded === 'true' ? 'Refreshing scripts...' : 'Loading scripts...');
     syncExpandedHeight(article);
 
     try {
       var scripts = await getProjectScripts(project.scriptsManifestUrl);
       renderProjectScripts(section, scripts, article);
       section.dataset.loaded = 'true';
+      section.dataset.loadedAt = String(Date.now());
       syncExpandedHeight(article);
     } catch (error) {
       renderScriptsStatus(section, 'Scripts could not be loaded right now.');
@@ -656,8 +664,9 @@
   }
 
   async function getProjectScripts(url) {
-    if (scriptsManifestCache.has(url)) {
-      return scriptsManifestCache.get(url);
+    var cachedScripts = getTimedCacheValue(scriptsManifestCache, url);
+    if (cachedScripts) {
+      return cachedScripts;
     }
 
     var response = await fetch(url, { cache: 'no-store' });
@@ -670,7 +679,7 @@
       throw new Error('Invalid scripts manifest');
     }
 
-    scriptsManifestCache.set(url, manifest.scripts);
+    setTimedCacheValue(scriptsManifestCache, url, manifest.scripts);
     return manifest.scripts;
   }
 
@@ -697,8 +706,9 @@
       throw new Error('Missing install URL');
     }
 
-    if (userscriptVersionCache.has(installUrl)) {
-      return userscriptVersionCache.get(installUrl);
+    var cachedVersion = getTimedCacheValue(userscriptVersionCache, installUrl);
+    if (cachedVersion) {
+      return cachedVersion;
     }
 
     var response = await fetch(installUrl, { cache: 'no-store' });
@@ -708,8 +718,29 @@
 
     var source = await response.text();
     var version = extractUserscriptVersion(source);
-    userscriptVersionCache.set(installUrl, version);
+    setTimedCacheValue(userscriptVersionCache, installUrl, version);
     return version;
+  }
+
+  function getTimedCacheValue(cache, key) {
+    var entry = cache.get(key);
+    if (!entry) {
+      return null;
+    }
+
+    if (Date.now() - entry.cachedAt >= remoteCacheTtlMs) {
+      cache.delete(key);
+      return null;
+    }
+
+    return entry.value;
+  }
+
+  function setTimedCacheValue(cache, key, value) {
+    cache.set(key, {
+      value: value,
+      cachedAt: Date.now()
+    });
   }
 
   function extractUserscriptVersion(source) {
