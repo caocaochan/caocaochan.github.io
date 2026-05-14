@@ -30,6 +30,21 @@
     ]
   },
   {
+    "name": "iqDL",
+    "url": "https://github.com/caocaochan/iqDL/releases/latest",
+    "language": "JavaScript",
+    "languageColor": "oklch(0.68 0.16 75)",
+    "releaseRepo": "caocaochan/iqDL",
+    "description": "Chrome Manifest V3 extension that adds SRT download buttons for subtitle tracks exposed by the iQIYI web player on iq.com and iqiyi.com.",
+    "tags": ["chrome", "extension", "iqiyi", "subtitles"],
+    "features": [
+      "Adds SRT download buttons beside available subtitle languages",
+      "Converts exposed iQIYI subtitle tracks into SRT files",
+      "Fallback subtitle panel when the player menu markup changes",
+      "Auto-packaged GitHub releases on every push to master"
+    ]
+  },
+  {
     "name": "userscripts",
     "url": "https://github.com/caocaochan/userscripts",
     "language": "JavaScript",
