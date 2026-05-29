@@ -478,7 +478,6 @@
 <script>
   var projectsList = document.getElementById('projects-list');
   var scriptsManifestCache = new Map();
-  var releaseVersionCache = new Map();
   var userscriptVersionCache = new Map();
   var remoteCacheTtlMs = 60 * 1000;
   var activeProjectArticle = null;
@@ -499,7 +498,7 @@
     return String(index + 1).padStart(2, '0');
   }
 
-  function renderProject(project, index) {
+  function renderProject(project, index, releases) {
     var article = createElement('div', 'project');
     article.addEventListener('click', function (event) {
       toggleProject(article, project, event);
@@ -519,13 +518,8 @@
     var langDot = createElement('span', 'lang-dot');
     langDot.style.background = project.languageColor;
     lang.appendChild(langDot);
-    var langText = document.createTextNode(project.releaseRepo ? 'Loading...' : project.language);
-    lang.appendChild(langText);
+    lang.appendChild(document.createTextNode(getProjectReleaseLabel(project, releases)));
     header.appendChild(lang);
-
-    if (project.releaseRepo) {
-      loadProjectReleaseVersion(project, langText);
-    }
 
     header.appendChild(createElement('span', 'expand-arrow', '\u25BE'));
     article.appendChild(header);
@@ -562,7 +556,7 @@
     return article;
   }
 
-  function renderProjects(projects) {
+  function renderProjects(projects, releases) {
     activeProjectArticle = null;
     projectsList.replaceChildren();
 
@@ -572,7 +566,7 @@
     }
 
     projects.forEach(function (project, index) {
-      projectsList.appendChild(renderProject(project, index));
+      projectsList.appendChild(renderProject(project, index, releases));
     });
   }
 
@@ -580,33 +574,36 @@
     projectsList.replaceChildren(createElement('p', 'projects-status', message));
   }
 
-  async function loadProjectReleaseVersion(project, textNode) {
-    try {
-      textNode.nodeValue = await getLatestReleaseVersion(project.releaseRepo);
-    } catch (error) {
-      textNode.nodeValue = 'Release unavailable';
-      console.error('Failed to load latest release for ' + project.releaseRepo + ':', error);
+  function getProjectReleaseLabel(project, releases) {
+    if (!project.releaseRepo) {
+      return project.language;
     }
+
+    var release = releases[project.releaseRepo];
+    if (release && typeof release.tagName === 'string' && release.tagName.length > 0) {
+      return release.tagName;
+    }
+
+    return 'Release unavailable';
   }
 
-  async function getLatestReleaseVersion(releaseRepo) {
-    var cachedVersion = getTimedCacheValue(releaseVersionCache, releaseRepo);
-    if (cachedVersion) {
-      return cachedVersion;
-    }
+  async function loadReleaseSnapshots() {
+    try {
+      var response = await fetch('./releases.json', { cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error('HTTP ' + response.status);
+      }
 
-    var response = await fetch('https://api.github.com/repos/' + releaseRepo + '/releases/latest', { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error('HTTP ' + response.status);
-    }
+      var releases = await response.json();
+      if (!releases || Array.isArray(releases) || typeof releases !== 'object') {
+        throw new Error('Invalid releases format');
+      }
 
-    var release = await response.json();
-    if (!release || typeof release.tag_name !== 'string' || release.tag_name.length === 0) {
-      throw new Error('Invalid release format');
+      return releases;
+    } catch (error) {
+      console.error('Failed to load release snapshot:', error);
+      return {};
     }
-
-    setTimedCacheValue(releaseVersionCache, releaseRepo, release.tag_name);
-    return release.tag_name;
   }
 
   async function loadProjects() {
@@ -621,7 +618,7 @@
         throw new Error('Invalid projects format');
       }
 
-      renderProjects(projects);
+      renderProjects(projects, await loadReleaseSnapshots());
     } catch (error) {
       showProjectsError('Projects could not be loaded right now. Please try again later.');
       console.error('Failed to load projects:', error);
