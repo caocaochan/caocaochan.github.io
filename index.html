@@ -494,6 +494,12 @@
     return el;
   }
 
+  function getRemoteFetchUrl(url) {
+    var fetchUrl = new URL(url, window.location.href);
+    fetchUrl.searchParams.set('_cacheBust', String(Math.floor(Date.now() / remoteCacheTtlMs)));
+    return fetchUrl.toString();
+  }
+
   function formatProjectNumber(index) {
     return String(index + 1).padStart(2, '0');
   }
@@ -666,7 +672,7 @@
       return cachedScripts;
     }
 
-    var response = await fetch(url, { cache: 'no-store' });
+    var response = await fetch(getRemoteFetchUrl(url), { cache: 'no-store' });
     if (!response.ok) {
       throw new Error('HTTP ' + response.status);
     }
@@ -708,7 +714,7 @@
       return cachedVersion;
     }
 
-    var response = await fetch(installUrl, { cache: 'no-store' });
+    var response = await fetch(getRemoteFetchUrl(installUrl), { cache: 'no-store' });
     if (!response.ok) {
       throw new Error('HTTP ' + response.status);
     }
