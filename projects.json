@@ -1,5 +1,20 @@
 [
   {
+    "name": "Lapis Chinese",
+    "url": "https://github.com/caocaochan/LapisChinese/releases/latest",
+    "language": "HTML",
+    "languageColor": "oklch(0.64 0.19 35)",
+    "releaseRepo": "caocaochan/LapisChinese",
+    "description": "Mandarin Chinese adaptation of the Lapis Anki note type, with Pinyin and Simplified and Traditional character support.",
+    "tags": ["anki", "chinese", "yomitan", "flashcards"],
+    "features": [
+      "Ready-to-import APKG with an example deck",
+      "Pinyin support with tone-aware styling",
+      "Persistent Simplified and Traditional character conversion",
+      "Vocabulary, sentence, audio, click, and combined card modes"
+    ]
+  },
+  {
     "name": "moegirl-yomitan",
     "url": "https://github.com/caocaochan/moegirl-yomitan",
     "language": "Python",
