@@ -30,6 +30,21 @@
     ]
   },
   {
+    "name": "hydcd-yomitan",
+    "url": "https://github.com/caocaochan/hydcd-yomitan",
+    "language": "Python",
+    "languageColor": "oklch(0.65 0.15 250)",
+    "releaseRepo": "caocaochan/hydcd-yomitan",
+    "description": "Convert 漢語大詞典 七訂 into a Yomitan dictionary, with normalized Pinyin readings for matching and tone coloring in Yomitan and Lapis.",
+    "tags": ["yomitan", "dictionary", "chinese", "pinyin"],
+    "features": [
+      "Normalized Pinyin shared across entries, variants, and redirects",
+      "Preserved Simplified and Traditional records with collapsible examples",
+      "Local images packaged without scripts or remote media",
+      "Automatic dictionary builds and validated GitHub releases"
+    ]
+  },
+  {
     "name": "CalibreAnalyzer",
     "url": "https://github.com/caocaochan/CalibreAnalyzer/releases/latest",
     "language": "Python",
