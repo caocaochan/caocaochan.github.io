@@ -45,6 +45,21 @@
     ]
   },
   {
+    "name": "xhdcd-yomitan",
+    "url": "https://github.com/caocaochan/xhdcd-yomitan",
+    "language": "Python",
+    "languageColor": "oklch(0.65 0.15 250)",
+    "releaseRepo": "caocaochan/xhdcd-yomitan",
+    "description": "Convert 现代汉语大词典 into a text-only Yomitan dictionary with Pinyin readings, examples, variant headwords, and internal term links.",
+    "tags": ["yomitan", "dictionary", "chinese", "pinyin"],
+    "features": [
+      "Importable Yomitan ZIP with a self-updating index",
+      "Preserved definitions, examples, variants, and internal links",
+      "Normalized Pinyin readings and separate homograph entries",
+      "Reproducible builds with validation reports and GitHub releases"
+    ]
+  },
+  {
     "name": "CalibreAnalyzer",
     "url": "https://github.com/caocaochan/CalibreAnalyzer/releases/latest",
     "language": "Python",
