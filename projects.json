@@ -15,6 +15,21 @@
     ]
   },
   {
+    "name": "Danmei 5k",
+    "url": "https://github.com/caocaochan/Danmei5k/releases/latest",
+    "language": "Anki",
+    "languageColor": "oklch(0.62 0.13 160)",
+    "releaseRepo": "caocaochan/Danmei5k",
+    "description": "Anki deck of the 5000 most common words in danmei novels, for learners who want to read them in Chinese.",
+    "tags": ["anki", "chinese", "danmei", "flashcards"],
+    "features": [
+      "Words from a frequency list built from about 2000 danmei novels, without character names",
+      "An i+1 example sentence from the novels on every card",
+      "CC-CEDICT definitions, with missing words and senses written in the same style",
+      "TTS audio for words and sentences, on the Lapis Chinese note type"
+    ]
+  },
+  {
     "name": "dictionaries",
     "url": "https://github.com/caocaochan?tab=repositories",
     "language": "Python",
@@ -126,6 +141,35 @@
       "HSK coverage breakdowns and word-length statistics",
       "Optional Anki comparison for known words or characters",
       "Auto-versioned GitHub releases on every push to main"
+    ]
+  },
+  {
+    "name": "anki-ui-fonts",
+    "url": "https://github.com/caocaochan/anki-ui-fonts/releases/latest",
+    "language": "Python",
+    "languageColor": "oklch(0.65 0.15 250)",
+    "releaseRepo": "caocaochan/anki-ui-fonts",
+    "description": "Anki add-on for separate UI and browser fonts, sizes, and regional CJK rendering. Available on AnkiWeb as 1031646718.",
+    "tags": ["anki", "addon", "fonts", "cjk"],
+    "features": [
+      "Separate Latin and CJK fonts and sizes for the interface and browser entries",
+      "Automatic regional CJK font selection (Noto Sans, then Microsoft UI fonts)",
+      "Rendering locale for zh-Hans, zh-Hant-TW, zh-Hant-HK, ja, and ko",
+      "Live preview with Apply, Cancel, and Restore Defaults"
+    ]
+  },
+  {
+    "name": "UpdateNotifier",
+    "url": "https://github.com/caocaochan/UpdateNotifier",
+    "language": "Rust",
+    "languageColor": "oklch(0.76 0.09 60)",
+    "description": "Windows tray app that notifies you about new GitHub releases, pre-releases, or commits.",
+    "tags": ["windows", "github", "notifications", "rust"],
+    "features": [
+      "Watch stable releases, all releases, or commits on a branch per repository",
+      "Native Windows notifications that open the release or compare page",
+      "Reuses an existing GitHub login (Credential Manager, env var, gh, or Git)",
+      "Single ~3 MB executable with no runtime dependencies"
     ]
   },
   {

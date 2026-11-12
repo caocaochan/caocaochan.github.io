@@ -4,6 +4,11 @@
     "url": "https://github.com/caocaochan/LapisChinese/releases/tag/v1.0.7",
     "fetchedAt": "2026-09-13T15:30:21.119Z"
   },
+  "caocaochan/Danmei5k": {
+    "tagName": "v1.0",
+    "url": "https://github.com/caocaochan/Danmei5k/releases/tag/v1.0",
+    "fetchedAt": "2026-11-12T10:15:38.283Z"
+  },
   "caocaochan/hydcd-yomitan": {
     "tagName": "build-35110561158-1",
     "url": "https://github.com/caocaochan/hydcd-yomitan/releases/tag/build-35110561158-1",
@@ -53,5 +58,10 @@
     "tagName": "v2026.05.07.1",
     "url": "https://github.com/caocaochan/CalibreAnalyzer/releases/tag/v2026.05.07.1",
     "fetchedAt": "2026-05-29T00:00:00.000Z"
+  },
+  "caocaochan/anki-ui-fonts": {
+    "tagName": "v1.1.0",
+    "url": "https://github.com/caocaochan/anki-ui-fonts/releases/tag/v1.1.0",
+    "fetchedAt": "2026-11-12T10:15:40.921Z"
   }
 }
