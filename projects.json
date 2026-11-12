@@ -15,48 +15,102 @@
     ]
   },
   {
-    "name": "moegirl-yomitan",
-    "url": "https://github.com/caocaochan/moegirl-yomitan",
+    "name": "dictionaries",
+    "url": "https://github.com/caocaochan?tab=repositories",
     "language": "Python",
     "languageColor": "oklch(0.65 0.15 250)",
-    "releaseRepo": "caocaochan/moegirl-yomitan",
-    "description": "Build a Yomitan term dictionary from public Moegirlpedia (萌娘百科) lead summaries. Automated weekly builds via GitHub Actions.",
-    "tags": ["yomitan", "dictionary", "moegirlpedia", "cli"],
-    "features": [
-      "CLI with configurable batch size and concurrency",
-      "Auto-versioned builds (YYYY.MM.DD format)",
-      "Weekly CI/CD with cache restoration",
-      "Self-updating Yomitan import URL"
-    ]
-  },
-  {
-    "name": "hydcd-yomitan",
-    "url": "https://github.com/caocaochan/hydcd-yomitan",
-    "language": "Python",
-    "languageColor": "oklch(0.65 0.15 250)",
-    "releaseRepo": "caocaochan/hydcd-yomitan",
-    "description": "Convert 漢語大詞典 七訂 into a Yomitan dictionary, with normalized Pinyin readings for matching and tone coloring in Yomitan and Lapis.",
-    "tags": ["yomitan", "dictionary", "chinese", "pinyin"],
-    "features": [
-      "Normalized Pinyin shared across entries, variants, and redirects",
-      "Preserved Simplified and Traditional records with collapsible examples",
-      "Local images packaged without scripts or remote media",
-      "Automatic dictionary builds and validated GitHub releases"
-    ]
-  },
-  {
-    "name": "xhdcd-yomitan",
-    "url": "https://github.com/caocaochan/xhdcd-yomitan",
-    "language": "Python",
-    "languageColor": "oklch(0.65 0.15 250)",
-    "releaseRepo": "caocaochan/xhdcd-yomitan",
-    "description": "Convert 现代汉语大词典 into a text-only Yomitan dictionary with Pinyin readings, examples, variant headwords, and internal term links.",
-    "tags": ["yomitan", "dictionary", "chinese", "pinyin"],
-    "features": [
-      "Importable Yomitan ZIP with a self-updating index",
-      "Preserved definitions, examples, variants, and internal links",
-      "Normalized Pinyin readings and separate homograph entries",
-      "Reproducible builds with validation reports and GitHub releases"
+    "description": "Collection of my Yomitan dictionaries.",
+    "tags": ["yomitan", "dictionary", "chinese", "korean", "frequency"],
+    "features": [],
+    "itemsTitle": "Dictionaries",
+    "items": [
+      {
+        "name": "hydcd-yomitan",
+        "url": "https://github.com/caocaochan/hydcd-yomitan",
+        "releaseRepo": "caocaochan/hydcd-yomitan",
+        "description": "漢語大詞典 七訂 with normalized Pinyin readings for matching and tone coloring in Yomitan and Lapis, collapsible examples, and packaged images.",
+        "downloads": [
+          { "label": "full", "url": "https://github.com/caocaochan/hydcd-yomitan/releases/latest/download/hydcd-qiding-yomitan.zip" },
+          { "label": "light", "url": "https://github.com/caocaochan/hydcd-yomitan/releases/latest/download/hydcd-qiding-yomitan-light.zip" }
+        ]
+      },
+      {
+        "name": "xhdcd-yomitan",
+        "url": "https://github.com/caocaochan/xhdcd-yomitan",
+        "releaseRepo": "caocaochan/xhdcd-yomitan",
+        "description": "现代汉语大词典 as a text-only dictionary with Pinyin readings, examples, variant headwords, and internal term links.",
+        "downloads": [
+          { "label": "download", "url": "https://github.com/caocaochan/xhdcd-yomitan/releases/latest/download/xhdcd-yomitan-text.zip" }
+        ]
+      },
+      {
+        "name": "chengyu-yomitan",
+        "url": "https://github.com/caocaochan/chengyu-yomitan",
+        "releaseRepo": "caocaochan/chengyu-yomitan",
+        "description": "汉语成语源流大辞典 and 新华成语大词典 with HYDCD-style formatting, collapsible examples, and Simplified and Traditional lookup.",
+        "downloads": [
+          { "label": "汉语成语源流大辞典", "url": "https://github.com/caocaochan/chengyu-yomitan/releases/latest/download/hycyyl-yomitan.zip" },
+          { "label": "新华成语大词典", "url": "https://github.com/caocaochan/chengyu-yomitan/releases/latest/download/xhcycd-yomitan.zip" }
+        ]
+      },
+      {
+        "name": "chinese-wikipedia-dictionary",
+        "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary",
+        "releaseRepo": "caocaochan/chinese-wikipedia-dictionary",
+        "description": "2.1M Chinese Wikipedia titles and redirects with short Simplified Chinese definitions from each article's lead, for names, places, works, and terms general dictionaries miss. Rebuilt monthly.",
+        "downloads": [
+          { "label": "download", "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary/releases/latest/download/wikipedia_zh.zip" }
+        ]
+      },
+      {
+        "name": "moegirl-yomitan",
+        "url": "https://github.com/caocaochan/moegirl-yomitan",
+        "releaseRepo": "caocaochan/moegirl-yomitan",
+        "description": "Moegirlpedia (萌娘百科) lead summaries as a term dictionary for anime, games, and internet culture. Rebuilt weekly.",
+        "downloads": [
+          { "label": "download", "url": "https://github.com/caocaochan/moegirl-yomitan/releases/latest/download/moegirl-yomitan.zip" }
+        ]
+      },
+      {
+        "name": "bilibili-slang-dictionary",
+        "url": "https://github.com/caocaochan/bilibili-slang-dictionary",
+        "releaseRepo": "caocaochan/bilibili-slang-dictionary",
+        "description": "Chinese–English dictionary of slang, memes, fandom, and gaming terms from Bilibili comments, plus web novel and danmei vocabulary. Also available as MDict.",
+        "downloads": [
+          { "label": "yomitan", "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/latest/download/bilibili_slang.zip" },
+          { "label": "mdict", "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/latest/download/bilibili_slang.mdx" }
+        ]
+      },
+      {
+        "name": "genshin-yomitan",
+        "url": "https://github.com/caocaochan/genshin-yomitan",
+        "releaseRepo": "caocaochan/genshin-yomitan",
+        "description": "Genshin Impact (原神) names and terms built from the game's own data: characters, places, enemies, items, talents, quests, and more, with Chinese or English definitions.",
+        "downloads": [
+          { "label": "中文", "url": "https://github.com/caocaochan/genshin-yomitan/releases/latest/download/genshin_zh.zip" },
+          { "label": "english", "url": "https://github.com/caocaochan/genshin-yomitan/releases/latest/download/genshin_en.zip" }
+        ]
+      },
+      {
+        "name": "yomitan-frequency-dicts",
+        "url": "https://github.com/caocaochan/yomitan-frequency-dicts",
+        "releaseRepo": "caocaochan/yomitan-frequency-dicts",
+        "description": "Chinese word frequency dictionaries from 2.29B Bilibili comments and 2,047 danmei novels, segmented with HanLP.",
+        "downloads": [
+          { "label": "bilibili", "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/Bilibili.zip" },
+          { "label": "bilibili small", "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/BilibiliSmall.zip" },
+          { "label": "danmei", "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/Danmei.zip" }
+        ]
+      },
+      {
+        "name": "shiberu-yomitan",
+        "url": "https://github.com/caocaochan/shiberu-yomitan",
+        "releaseRepo": "caocaochan/shiberu-yomitan",
+        "description": "Shiberu Korean word frequency list (80,000 words) as a Yomitan frequency dictionary.",
+        "downloads": [
+          { "label": "download", "url": "https://github.com/caocaochan/shiberu-yomitan/releases/latest/download/Shiberu_Korean_Frequency.zip" }
+        ]
+      }
     ]
   },
   {

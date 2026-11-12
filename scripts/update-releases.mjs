@@ -21,12 +21,23 @@ async function readJson(filePath, fallback) {
 function releaseReposFromProjects(projects) {
   const repos = new Set();
 
-  for (const project of projects) {
-    if (project && typeof project.releaseRepo === 'string' && project.releaseRepo.trim()) {
-      repos.add(project.releaseRepo.trim());
+  function collect(entries) {
+    for (const entry of entries) {
+      if (!entry) {
+        continue;
+      }
+
+      if (typeof entry.releaseRepo === 'string' && entry.releaseRepo.trim()) {
+        repos.add(entry.releaseRepo.trim());
+      }
+
+      if (Array.isArray(entry.items)) {
+        collect(entry.items);
+      }
     }
   }
 
+  collect(projects);
   return Array.from(repos);
 }
 

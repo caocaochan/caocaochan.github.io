@@ -4,11 +4,6 @@
     "url": "https://github.com/caocaochan/LapisChinese/releases/tag/v1.0.7",
     "fetchedAt": "2026-09-13T15:30:21.119Z"
   },
-  "caocaochan/moegirl-yomitan": {
-    "tagName": "2026.09.06",
-    "url": "https://github.com/caocaochan/moegirl-yomitan/releases/tag/2026.09.06",
-    "fetchedAt": "2026-09-07T02:33:14.638Z"
-  },
   "caocaochan/hydcd-yomitan": {
     "tagName": "build-35110561158-1",
     "url": "https://github.com/caocaochan/hydcd-yomitan/releases/tag/build-35110561158-1",
@@ -17,7 +12,42 @@
   "caocaochan/xhdcd-yomitan": {
     "tagName": "build-36312188845-1",
     "url": "https://github.com/caocaochan/xhdcd-yomitan/releases/tag/build-36312188845-1",
-    "fetchedAt": "2026-09-27T16:17:05.780Z"
+    "fetchedAt": "2026-11-12T10:12:18.863Z"
+  },
+  "caocaochan/chengyu-yomitan": {
+    "tagName": "build-2026.11.08.2.3.1",
+    "url": "https://github.com/caocaochan/chengyu-yomitan/releases/tag/build-2026.11.08.2.3.1",
+    "fetchedAt": "2026-11-12T10:12:19.101Z"
+  },
+  "caocaochan/chinese-wikipedia-dictionary": {
+    "tagName": "2026-11-01",
+    "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary/releases/tag/2026-11-01",
+    "fetchedAt": "2026-11-12T10:12:19.327Z"
+  },
+  "caocaochan/moegirl-yomitan": {
+    "tagName": "2026.09.06",
+    "url": "https://github.com/caocaochan/moegirl-yomitan/releases/tag/2026.09.06",
+    "fetchedAt": "2026-09-07T02:33:14.638Z"
+  },
+  "caocaochan/bilibili-slang-dictionary": {
+    "tagName": "v1.2.1",
+    "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/tag/v1.2.1",
+    "fetchedAt": "2026-11-12T10:12:19.779Z"
+  },
+  "caocaochan/genshin-yomitan": {
+    "tagName": "v7.2.0-20261110",
+    "url": "https://github.com/caocaochan/genshin-yomitan/releases/tag/v7.2.0-20261110",
+    "fetchedAt": "2026-11-12T10:12:19.993Z"
+  },
+  "caocaochan/yomitan-frequency-dicts": {
+    "tagName": "2026.11.10",
+    "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/tag/2026.11.10",
+    "fetchedAt": "2026-11-12T10:12:20.222Z"
+  },
+  "caocaochan/shiberu-yomitan": {
+    "tagName": "2026.10.28",
+    "url": "https://github.com/caocaochan/shiberu-yomitan/releases/tag/2026.10.28",
+    "fetchedAt": "2026-11-12T10:12:20.492Z"
   },
   "caocaochan/CalibreAnalyzer": {
     "tagName": "v2026.05.07.1",

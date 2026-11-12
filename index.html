@@ -372,8 +372,9 @@
 
   .project-script-actions {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 14px;
+    gap: 6px 14px;
     margin-top: 2px;
   }
 
@@ -549,6 +550,10 @@
       detailsInner.appendChild(features);
     }
 
+    if (Array.isArray(project.items) && project.items.length > 0) {
+      detailsInner.appendChild(renderProjectItems(project, releases));
+    }
+
     if (project.scriptsManifestUrl) {
       var scriptsSection = createElement('section', 'project-scripts');
       scriptsSection.hidden = true;
@@ -560,6 +565,59 @@
     details.appendChild(detailsInner);
     article.appendChild(details);
     return article;
+  }
+
+  function createActionLink(label, url) {
+    var link = createElement('a', 'project-script-action', label);
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    return link;
+  }
+
+  function renderProjectItems(project, releases) {
+    var section = createElement('section', 'project-scripts');
+    section.appendChild(createElement('p', 'project-scripts-title', project.itemsTitle || 'Items'));
+
+    var list = createElement('div', 'project-scripts-list');
+
+    project.items.forEach(function (item) {
+      var card = createElement('article', 'project-script');
+
+      var titleRow = createElement('div', 'project-script-title-row');
+      titleRow.appendChild(createElement('div', 'project-script-name', item.name || 'Unnamed'));
+      if (item.releaseRepo) {
+        titleRow.appendChild(createElement('span', 'project-script-version', getProjectReleaseLabel(item, releases)));
+      }
+      card.appendChild(titleRow);
+
+      if (item.description) {
+        card.appendChild(createElement('p', 'project-script-desc', item.description));
+      }
+
+      var actions = createElement('div', 'project-script-actions');
+
+      if (Array.isArray(item.downloads)) {
+        item.downloads.forEach(function (download) {
+          if (download && download.url) {
+            actions.appendChild(createActionLink(download.label || 'download', download.url));
+          }
+        });
+      }
+
+      if (item.url) {
+        actions.appendChild(createActionLink('source', item.url));
+      }
+
+      if (actions.childNodes.length > 0) {
+        card.appendChild(actions);
+      }
+
+      list.appendChild(card);
+    });
+
+    section.appendChild(list);
+    return section;
   }
 
   function renderProjects(projects, releases) {
