@@ -144,6 +144,21 @@
     ]
   },
   {
+    "name": "hanstat",
+    "url": "https://github.com/caocaochan/hanstat/releases/latest",
+    "language": "Rust",
+    "languageColor": "oklch(0.76 0.09 60)",
+    "releaseRepo": "caocaochan/hanstat",
+    "description": "Character and word statistics for Chinese EPUB and TXT files, with exact hanzi counts and LTP, CKIP, or jieba word segmentation. Windows GUI and CLI.",
+    "tags": ["chinese", "epub", "segmentation", "rust"],
+    "features": [
+      "Exact Han character counts across every Unicode ideograph block, with EPUB TOC, ruby, and hidden text excluded",
+      "Script-aware segmentation: LTP for Simplified, CKIP for Traditional, or jieba offline",
+      "Automatic name discovery to keep character names whole in word counts",
+      "Coverage, per-section breakdowns, CSV/JSON export, and known-word coverage from Anki"
+    ]
+  },
+  {
     "name": "anki-ui-fonts",
     "url": "https://github.com/caocaochan/anki-ui-fonts/releases/latest",
     "language": "Python",

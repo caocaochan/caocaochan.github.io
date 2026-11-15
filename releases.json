@@ -59,6 +59,11 @@
     "url": "https://github.com/caocaochan/CalibreAnalyzer/releases/tag/v2026.05.07.1",
     "fetchedAt": "2026-05-29T00:00:00.000Z"
   },
+  "caocaochan/hanstat": {
+    "tagName": "v0.3.1",
+    "url": "https://github.com/caocaochan/hanstat/releases/tag/v0.3.1",
+    "fetchedAt": "2026-11-15T09:30:00.000Z"
+  },
   "caocaochan/anki-ui-fonts": {
     "tagName": "v1.1.0",
     "url": "https://github.com/caocaochan/anki-ui-fonts/releases/tag/v1.1.0",
