@@ -45,9 +45,9 @@
     "fetchedAt": "2026-11-12T19:27:37.195Z"
   },
   "caocaochan/yomitan-frequency-dicts": {
-    "tagName": "2026.11.10",
-    "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/tag/2026.11.10",
-    "fetchedAt": "2026-11-12T10:12:20.222Z"
+    "tagName": "2026.11.18",
+    "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/tag/2026.11.18",
+    "fetchedAt": "2026-11-18T19:52:51.469Z"
   },
   "caocaochan/shiberu-yomitan": {
     "tagName": "2026.10.28",
@@ -60,9 +60,9 @@
     "fetchedAt": "2026-05-29T00:00:00.000Z"
   },
   "caocaochan/hanstat": {
-    "tagName": "2026.11.17.16",
-    "url": "https://github.com/caocaochan/hanstat/releases/tag/2026.11.17.16",
-    "fetchedAt": "2026-11-18T05:41:10.835Z"
+    "tagName": "2026.11.18.06",
+    "url": "https://github.com/caocaochan/hanstat/releases/tag/2026.11.18.06",
+    "fetchedAt": "2026-11-18T19:52:52.008Z"
   },
   "caocaochan/anki-ui-fonts": {
     "tagName": "v1.1.0",
