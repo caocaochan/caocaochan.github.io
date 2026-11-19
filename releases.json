@@ -35,9 +35,9 @@
     "fetchedAt": "2026-09-07T02:33:14.638Z"
   },
   "caocaochan/bilibili-slang-dictionary": {
-    "tagName": "v1.2.1",
-    "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/tag/v1.2.1",
-    "fetchedAt": "2026-11-12T10:12:19.779Z"
+    "tagName": "v1.3.0",
+    "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/tag/v1.3.0",
+    "fetchedAt": "2026-11-19T19:52:44.688Z"
   },
   "caocaochan/genshin-yomitan": {
     "tagName": "v7.2.0-20261112T1420",
@@ -60,9 +60,9 @@
     "fetchedAt": "2026-05-29T00:00:00.000Z"
   },
   "caocaochan/hanstat": {
-    "tagName": "2026.11.18.06",
-    "url": "https://github.com/caocaochan/hanstat/releases/tag/2026.11.18.06",
-    "fetchedAt": "2026-11-18T19:52:52.008Z"
+    "tagName": "2026.11.19.04",
+    "url": "https://github.com/caocaochan/hanstat/releases/tag/2026.11.19.04",
+    "fetchedAt": "2026-11-19T19:52:45.718Z"
   },
   "caocaochan/anki-ui-fonts": {
     "tagName": "v1.1.0",
