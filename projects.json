@@ -69,6 +69,24 @@
         ]
       },
       {
+        "name": "mandarin-collocations",
+        "url": "https://github.com/caocaochan/mandarin-collocations",
+        "releaseRepo": "caocaochan/mandarin-collocations",
+        "description": "Bidirectional Mandarin collocations dictionary. Look up a verb to find its objects, or a noun to find verbs and modifiers that go with it, with Simplified and Traditional lookup.",
+        "downloads": [
+          { "label": "download", "url": "https://github.com/caocaochan/mandarin-collocations/releases/latest/download/mandarin-collocations.zip" }
+        ]
+      },
+      {
+        "name": "naer-yomitan",
+        "url": "https://github.com/caocaochan/naer-yomitan",
+        "releaseRepo": "caocaochan/naer-yomitan",
+        "description": "NAER 樂詞網 Chinese–English dictionary of technical, academic, and official terms, with subject labels, mainland and Taiwan equivalents, and Simplified and Traditional lookup.",
+        "downloads": [
+          { "label": "download", "url": "https://github.com/caocaochan/naer-yomitan/releases/latest/download/naer_terms.zip" }
+        ]
+      },
+      {
         "name": "chinese-wikipedia-dictionary",
         "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary",
         "releaseRepo": "caocaochan/chinese-wikipedia-dictionary",
@@ -107,14 +125,25 @@
         ]
       },
       {
+        "name": "NovelNames",
+        "url": "https://github.com/caocaochan/NovelNames",
+        "releaseRepo": "caocaochan/NovelNames",
+        "description": "People, places, and organizations from 9,812 Chinese web novels, with Pinyin and the novels each name appears in, ranked by mentions per 100,000 characters.",
+        "downloads": [
+          { "label": "download", "url": "https://github.com/caocaochan/NovelNames/releases/latest/download/NovelNames.zip" }
+        ]
+      },
+      {
         "name": "yomitan-frequency-dicts",
         "url": "https://github.com/caocaochan/yomitan-frequency-dicts",
         "releaseRepo": "caocaochan/yomitan-frequency-dicts",
-        "description": "Chinese word frequency dictionaries from 2.29B Bilibili comments and 2,047 danmei novels, segmented with HanLP.",
+        "description": "Chinese word frequency dictionaries from 2.29B Bilibili comments, 2,047 danmei novels, and 8,675 general web novels. Danmei Opt and Webnovel use LTP segmentation and dictionary headword matching.",
         "downloads": [
           { "label": "bilibili", "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/Bilibili.zip" },
           { "label": "bilibili small", "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/BilibiliSmall.zip" },
-          { "label": "danmei", "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/Danmei.zip" }
+          { "label": "danmei", "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/Danmei.zip" },
+          { "label": "danmei opt", "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/DanmeiOpt.zip" },
+          { "label": "webnovel", "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/Webnovel.zip" }
         ]
       },
       {

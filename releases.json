@@ -24,6 +24,16 @@
     "url": "https://github.com/caocaochan/chengyu-yomitan/releases/tag/build-2026.11.08.2.3.1",
     "fetchedAt": "2026-11-12T10:12:19.101Z"
   },
+  "caocaochan/mandarin-collocations": {
+    "tagName": "v1.1.1",
+    "url": "https://github.com/caocaochan/mandarin-collocations/releases/tag/v1.1.1",
+    "fetchedAt": "2026-11-21T14:43:31.000Z"
+  },
+  "caocaochan/naer-yomitan": {
+    "tagName": "v2026-11-20-1417",
+    "url": "https://github.com/caocaochan/naer-yomitan/releases/tag/v2026-11-20-1417",
+    "fetchedAt": "2026-11-21T14:42:16.000Z"
+  },
   "caocaochan/chinese-wikipedia-dictionary": {
     "tagName": "2026-11-01",
     "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary/releases/tag/2026-11-01",
@@ -43,6 +53,11 @@
     "tagName": "v7.2.0-20261112T1420",
     "url": "https://github.com/caocaochan/genshin-yomitan/releases/tag/v7.2.0-20261112T1420",
     "fetchedAt": "2026-11-12T19:27:37.195Z"
+  },
+  "caocaochan/NovelNames": {
+    "tagName": "v2026.11.21",
+    "url": "https://github.com/caocaochan/NovelNames/releases/tag/v2026.11.21",
+    "fetchedAt": "2026-11-21T14:42:16.000Z"
   },
   "caocaochan/yomitan-frequency-dicts": {
     "tagName": "2026.11.18",
