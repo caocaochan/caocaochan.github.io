@@ -1,0 +1,284 @@
+[
+  {
+    "id": "hanyu-da-cidian",
+    "category": "reference",
+    "mark": "典",
+    "kind": "Comprehensive dictionary",
+    "title": "Hanyu Da Cidian",
+    "subtitle": "漢語大詞典 七訂",
+    "lang": "zh-Hant",
+    "description": "The seventh revised edition of the Hanyu Da Cidian. Normalized Pinyin works with Yomitan and Lapis tone coloring, and usage examples can be expanded inside an entry.",
+    "url": "https://github.com/caocaochan/hydcd-yomitan",
+    "releaseRepo": "caocaochan/hydcd-yomitan",
+    "downloads": [
+      {
+        "label": "Full ZIP · with images",
+        "url": "https://github.com/caocaochan/hydcd-yomitan/releases/latest/download/hydcd-qiding-yomitan.zip"
+      },
+      {
+        "label": "Light ZIP",
+        "url": "https://github.com/caocaochan/hydcd-yomitan/releases/latest/download/hydcd-qiding-yomitan-light.zip"
+      }
+    ]
+  },
+  {
+    "id": "xiandai-hanyu-da-cidian",
+    "category": "reference",
+    "mark": "語",
+    "kind": "Modern Chinese",
+    "title": "Xiandai Hanyu Da Cidian",
+    "subtitle": "现代汉语大词典",
+    "lang": "zh-Hans",
+    "description": "A text-only edition with Pinyin, usage examples, variant headwords, and links between related entries.",
+    "url": "https://github.com/caocaochan/xhdcd-yomitan",
+    "releaseRepo": "caocaochan/xhdcd-yomitan",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/xhdcd-yomitan/releases/latest/download/xhdcd-yomitan-text.zip"
+      }
+    ]
+  },
+  {
+    "id": "hanyu-chengyu-yuanliu",
+    "category": "reference",
+    "mark": "源",
+    "kind": "Idioms & origins",
+    "title": "Hanyu Chengyu Yuanliu",
+    "subtitle": "汉语成语源流大辞典",
+    "lang": "zh-Hans",
+    "description": "A reference for Chinese idioms and their origins, with collapsible examples and lookup in Simplified and Traditional Chinese.",
+    "url": "https://github.com/caocaochan/chengyu-yomitan",
+    "releaseRepo": "caocaochan/chengyu-yomitan",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/chengyu-yomitan/releases/latest/download/hycyyl-yomitan.zip"
+      }
+    ]
+  },
+  {
+    "id": "xinhua-chengyu",
+    "category": "reference",
+    "mark": "成",
+    "kind": "Idioms",
+    "title": "Xinhua Chengyu Dictionary",
+    "subtitle": "新华成语大词典",
+    "lang": "zh-Hans",
+    "description": "Xinhua’s Chinese idiom dictionary, formatted in the style of the Hanyu Da Cidian port, with collapsible examples and lookup in both scripts.",
+    "url": "https://github.com/caocaochan/chengyu-yomitan",
+    "releaseRepo": "caocaochan/chengyu-yomitan",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/chengyu-yomitan/releases/latest/download/xhcycd-yomitan.zip"
+      }
+    ]
+  },
+  {
+    "id": "mandarin-collocations",
+    "category": "reference",
+    "mark": "搭",
+    "kind": "Word combinations",
+    "title": "Mandarin Collocations",
+    "lang": "zh-Hans",
+    "description": "Find which objects go with a verb, or which verbs and modifiers go with a noun. Works in both directions and with Simplified and Traditional headwords.",
+    "url": "https://github.com/caocaochan/mandarin-collocations",
+    "releaseRepo": "caocaochan/mandarin-collocations",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/mandarin-collocations/releases/latest/download/mandarin-collocations.zip"
+      }
+    ]
+  },
+  {
+    "id": "naer-terminology",
+    "category": "reference",
+    "mark": "詞",
+    "kind": "Chinese–English terminology",
+    "title": "NAER Terminology",
+    "subtitle": "樂詞網",
+    "lang": "zh-Hant",
+    "description": "Technical, academic, and official terms from Taiwan’s NAER, with subject labels, mainland and Taiwan equivalents, and lookup in both scripts.",
+    "url": "https://github.com/caocaochan/naer-yomitan",
+    "releaseRepo": "caocaochan/naer-yomitan",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/naer-yomitan/releases/latest/download/naer_terms.zip"
+      }
+    ]
+  },
+  {
+    "id": "chinese-wikipedia",
+    "category": "culture",
+    "mark": "維",
+    "kind": "Encyclopedia",
+    "title": "Chinese Wikipedia",
+    "lang": "zh-Hant",
+    "description": "Short Simplified Chinese definitions drawn from article leads, covering about 2.1 million titles and redirects. Useful for people, locations, and works outside general dictionaries. Rebuilt monthly.",
+    "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary",
+    "releaseRepo": "caocaochan/chinese-wikipedia-dictionary",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary/releases/latest/download/wikipedia_zh.zip"
+      }
+    ]
+  },
+  {
+    "id": "moegirlpedia",
+    "category": "culture",
+    "mark": "萌",
+    "kind": "Anime, games & internet culture",
+    "title": "Moegirlpedia",
+    "subtitle": "萌娘百科",
+    "lang": "zh-Hans",
+    "description": "Lead summaries from Moegirlpedia for looking up anime, games, characters, and Chinese internet culture. Rebuilt weekly.",
+    "url": "https://github.com/caocaochan/moegirl-yomitan",
+    "releaseRepo": "caocaochan/moegirl-yomitan",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/moegirl-yomitan/releases/latest/download/moegirl-yomitan.zip"
+      }
+    ]
+  },
+  {
+    "id": "bilibili-slang",
+    "category": "culture",
+    "mark": "梗",
+    "kind": "Chinese–English slang",
+    "title": "Bilibili Slang",
+    "lang": "zh-Hans",
+    "description": "English glosses for slang, memes, fandom and gaming terms from Bilibili comments, plus web novel and danmei vocabulary.",
+    "url": "https://github.com/caocaochan/bilibili-slang-dictionary",
+    "releaseRepo": "caocaochan/bilibili-slang-dictionary",
+    "downloads": [
+      {
+        "label": "Yomitan ZIP",
+        "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/latest/download/bilibili_slang.zip"
+      },
+      {
+        "label": "MDict MDX",
+        "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/latest/download/bilibili_slang.mdx"
+      }
+    ]
+  },
+  {
+    "id": "genshin-impact",
+    "category": "culture",
+    "mark": "原",
+    "kind": "Game terminology",
+    "title": "Genshin Impact",
+    "subtitle": "原神",
+    "lang": "zh-Hans",
+    "description": "Characters, places, enemies, items, talents, and quests drawn from the game data, with separate Chinese and English definition editions.",
+    "url": "https://github.com/caocaochan/genshin-yomitan",
+    "releaseRepo": "caocaochan/genshin-yomitan",
+    "downloads": [
+      {
+        "label": "Chinese ZIP",
+        "url": "https://github.com/caocaochan/genshin-yomitan/releases/latest/download/genshin_zh.zip"
+      },
+      {
+        "label": "English ZIP",
+        "url": "https://github.com/caocaochan/genshin-yomitan/releases/latest/download/genshin_en.zip"
+      }
+    ]
+  },
+  {
+    "id": "novel-names",
+    "category": "culture",
+    "mark": "名",
+    "kind": "Web novel proper names",
+    "title": "NovelNames",
+    "lang": "zh-Hans",
+    "description": "People, places, and organizations from 9,812 Chinese web novels, ranked by mentions per 100,000 characters. Entries include Pinyin and the novels each name appears in.",
+    "url": "https://github.com/caocaochan/NovelNames",
+    "releaseRepo": "caocaochan/NovelNames",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/NovelNames/releases/latest/download/NovelNames.zip"
+      }
+    ]
+  },
+  {
+    "id": "bilibili-frequency",
+    "category": "frequency",
+    "mark": "频",
+    "kind": "Chinese · Comments",
+    "title": "Bilibili Frequency",
+    "lang": "zh-Hans",
+    "description": "Chinese word frequencies from 2.29 billion Bilibili comments. Choose between the full archive and Bilibili Small.",
+    "url": "https://github.com/caocaochan/yomitan-frequency-dicts",
+    "releaseRepo": "caocaochan/yomitan-frequency-dicts",
+    "downloads": [
+      {
+        "label": "Full ZIP",
+        "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/Bilibili.zip"
+      },
+      {
+        "label": "Small ZIP",
+        "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/BilibiliSmall.zip"
+      }
+    ]
+  },
+  {
+    "id": "danmei-frequency",
+    "category": "frequency",
+    "mark": "耽",
+    "kind": "Chinese · Danmei",
+    "title": "Danmei Frequency",
+    "lang": "zh-Hans",
+    "description": "Word frequencies from 2,047 danmei novels. The Danmei Opt edition uses LTP segmentation and dictionary headword matching.",
+    "url": "https://github.com/caocaochan/yomitan-frequency-dicts",
+    "releaseRepo": "caocaochan/yomitan-frequency-dicts",
+    "downloads": [
+      {
+        "label": "Danmei ZIP",
+        "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/Danmei.zip"
+      },
+      {
+        "label": "Danmei Opt ZIP",
+        "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/DanmeiOpt.zip"
+      }
+    ]
+  },
+  {
+    "id": "web-novel-frequency",
+    "category": "frequency",
+    "mark": "文",
+    "kind": "Chinese · Web novels",
+    "title": "Web Novel Frequency",
+    "lang": "zh-Hans",
+    "description": "Word frequencies from 8,675 general Chinese web novels, using LTP segmentation and dictionary headword matching.",
+    "url": "https://github.com/caocaochan/yomitan-frequency-dicts",
+    "releaseRepo": "caocaochan/yomitan-frequency-dicts",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/yomitan-frequency-dicts/releases/latest/download/Webnovel.zip"
+      }
+    ]
+  },
+  {
+    "id": "shiberu-korean-frequency",
+    "category": "frequency",
+    "mark": "한",
+    "kind": "Korean · Word frequency",
+    "title": "Shiberu Korean Frequency",
+    "lang": "ko",
+    "description": "Shiberu’s Korean frequency list, with 80,000 words in Yomitan format.",
+    "url": "https://github.com/caocaochan/shiberu-yomitan",
+    "releaseRepo": "caocaochan/shiberu-yomitan",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/shiberu-yomitan/releases/latest/download/Shiberu_Korean_Frequency.zip"
+      }
+    ]
+  }
+]

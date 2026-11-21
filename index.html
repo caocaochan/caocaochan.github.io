@@ -77,7 +77,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 64px;
+    margin-bottom: 32px;
   }
 
   .header h1 {
@@ -132,6 +132,51 @@
   .theme-toggle .icon-moon { display: block; }
   :root.dark .theme-toggle .icon-sun { display: block; }
   :root.dark .theme-toggle .icon-moon { display: none; }
+
+  .dictionary-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    border: 1px solid #b4befe55;
+    border-radius: 14px;
+    background: #1e1e2e;
+    color: #cdd6f4;
+    text-decoration: none;
+    transition: background var(--transition), border-color var(--transition);
+  }
+
+  .dictionary-link:hover {
+    background: #313244;
+    border-color: #b4befe;
+  }
+
+  .dictionary-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .dictionary-link strong {
+    display: block;
+    font-size: 21px;
+    letter-spacing: -0.02em;
+  }
+
+  .dictionary-link small {
+    display: block;
+    margin-top: 3px;
+    color: #bac2de;
+    font-size: 15px;
+  }
+
+  .dictionary-link-action {
+    color: #b4befe;
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
 
   /* Projects */
   .projects {
@@ -466,6 +511,14 @@
     </button>
   </header>
 
+  <a class="dictionary-link" href="./dictionaries/">
+    <span>
+      <strong>Dictionaries</strong>
+      <small>Chinese and Korean dictionaries for Yomitan</small>
+    </span>
+    <span class="dictionary-link-action">Browse the library</span>
+  </a>
+
   <div class="projects" id="projects-list">
     <p class="projects-status">Loading projects...</p>
   </div>
@@ -550,10 +603,6 @@
       detailsInner.appendChild(features);
     }
 
-    if (Array.isArray(project.items) && project.items.length > 0) {
-      detailsInner.appendChild(renderProjectItems(project, releases));
-    }
-
     if (project.scriptsManifestUrl) {
       var scriptsSection = createElement('section', 'project-scripts');
       scriptsSection.hidden = true;
@@ -565,59 +614,6 @@
     details.appendChild(detailsInner);
     article.appendChild(details);
     return article;
-  }
-
-  function createActionLink(label, url) {
-    var link = createElement('a', 'project-script-action', label);
-    link.href = url;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    return link;
-  }
-
-  function renderProjectItems(project, releases) {
-    var section = createElement('section', 'project-scripts');
-    section.appendChild(createElement('p', 'project-scripts-title', project.itemsTitle || 'Items'));
-
-    var list = createElement('div', 'project-scripts-list');
-
-    project.items.forEach(function (item) {
-      var card = createElement('article', 'project-script');
-
-      var titleRow = createElement('div', 'project-script-title-row');
-      titleRow.appendChild(createElement('div', 'project-script-name', item.name || 'Unnamed'));
-      if (item.releaseRepo) {
-        titleRow.appendChild(createElement('span', 'project-script-version', getProjectReleaseLabel(item, releases)));
-      }
-      card.appendChild(titleRow);
-
-      if (item.description) {
-        card.appendChild(createElement('p', 'project-script-desc', item.description));
-      }
-
-      var actions = createElement('div', 'project-script-actions');
-
-      if (Array.isArray(item.downloads)) {
-        item.downloads.forEach(function (download) {
-          if (download && download.url) {
-            actions.appendChild(createActionLink(download.label || 'download', download.url));
-          }
-        });
-      }
-
-      if (item.url) {
-        actions.appendChild(createActionLink('source', item.url));
-      }
-
-      if (actions.childNodes.length > 0) {
-        card.appendChild(actions);
-      }
-
-      list.appendChild(card);
-    });
-
-    section.appendChild(list);
-    return section;
   }
 
   function renderProjects(projects, releases) {

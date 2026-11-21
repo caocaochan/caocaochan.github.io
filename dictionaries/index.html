@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e2e">
+  <meta name="description" content="Browse and download CaoCao’s Chinese and Korean dictionaries for Yomitan.">
+  <title>Dictionary Library · CaoCao</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./catalog.css">
+  <script type="module" src="./catalog.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Skip to dictionaries</a>
+  <header class="site-header">
+    <nav class="shell header-inner" aria-label="Site">
+      <a class="brand" href="../">
+        <span class="brand-mark" lang="zh-Hans" aria-hidden="true">曹</span>
+        CaoCao
+      </a>
+      <div class="header-links">
+        <a href="../">Projects</a>
+        <a href="#install">Install guide</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <h1 id="page-title">Dictionary <em>library</em></h1>
+        <p class="hero-description">Chinese and Korean dictionaries for Yomitan.</p>
+      </div>
+
+      <div class="shelf" aria-hidden="true">
+        <div class="shelf-books">
+          <div class="book book-reference"><span lang="zh-Hant">詞典</span></div>
+          <div class="book book-idioms"><span lang="zh-Hant">成語</span></div>
+          <div class="book book-culture"><span lang="zh-Hant">俗語</span></div>
+          <div class="book book-frequency"><span lang="ko">빈도</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div id="catalog" tabindex="-1">
+      <div class="catalog-toolbar" id="catalog-toolbar" hidden>
+        <nav class="section-nav" aria-label="Dictionary categories">
+          <a href="#reference">Reference</a>
+          <a href="#culture">Culture &amp; names</a>
+          <a href="#frequency">Frequency</a>
+        </nav>
+        <label class="search">
+          <span class="visually-hidden">Find a dictionary</span>
+          <input id="dictionary-search" type="search" placeholder="Find a dictionary…" autocomplete="off" spellcheck="false">
+        </label>
+      </div>
+      <p id="catalog-status" class="catalog-status visually-hidden" role="status"></p>
+      <noscript>
+        <p class="catalog-status">Enable JavaScript to browse this catalog, or <a href="https://github.com/caocaochan?tab=repositories">find the dictionaries on GitHub</a>.</p>
+      </noscript>
+
+      <section id="reference" class="collection" aria-labelledby="reference-title" hidden>
+        <header class="collection-heading">
+          <h2 id="reference-title">Reference</h2>
+          <p>General dictionaries, idiom collections, collocations, and specialist terms.</p>
+        </header>
+        <div class="dictionary-grid"></div>
+      </section>
+      <section id="culture" class="collection" aria-labelledby="culture-title" hidden>
+        <header class="collection-heading">
+          <h2 id="culture-title">Culture &amp; names</h2>
+          <p>People, places, and vocabulary from encyclopedias, games, fiction, and online communities.</p>
+        </header>
+        <div class="dictionary-grid"></div>
+      </section>
+      <section id="frequency" class="collection" aria-labelledby="frequency-title" hidden>
+        <header class="collection-heading">
+          <h2 id="frequency-title">Frequency</h2>
+          <p>Word frequency lists for Chinese comments and fiction, and for Korean vocabulary.</p>
+        </header>
+        <div class="dictionary-grid"></div>
+      </section>
+    </div>
+
+    <aside id="install" class="install">
+      <h2>Import into Yomitan</h2>
+      <div>
+        <p>Keep the downloaded ZIP intact. In Yomitan settings, open <strong>Configure installed and enabled dictionaries</strong>, select <strong>Import</strong>, and choose the ZIP.</p>
+        <a href="https://yomitan.wiki/getting-started/#installing-dictionaries">Yomitan installation guide</a>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="shell site-footer">
+    <a href="../">CaoCao projects</a>
+    <a href="https://github.com/caocaochan">GitHub</a>
+  </footer>
+
+  <template id="dictionary-card">
+    <article class="dictionary-card">
+      <header class="card-heading">
+        <span class="card-mark" aria-hidden="true"></span>
+        <div>
+          <p class="card-kind"></p>
+          <h3 class="card-title"></h3>
+          <p class="card-subtitle"></p>
+        </div>
+      </header>
+      <p class="card-description"></p>
+      <div class="card-downloads"></div>
+      <footer class="card-meta"></footer>
+    </article>
+  </template>
+</body>
+</html>

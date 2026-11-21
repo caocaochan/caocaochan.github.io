@@ -4,6 +4,7 @@ import path from 'node:path';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const projectsPath = path.join(rootDir, 'projects.json');
+const catalogPath = path.join(rootDir, 'dictionaries', 'catalog.json');
 const releasesPath = path.join(rootDir, 'releases.json');
 
 async function readJson(filePath, fallback) {
@@ -18,27 +19,16 @@ async function readJson(filePath, fallback) {
   }
 }
 
-function releaseReposFromProjects(projects) {
+function releaseReposFromEntries(entries) {
   const repos = new Set();
 
-  function collect(entries) {
-    for (const entry of entries) {
-      if (!entry) {
-        continue;
-      }
-
-      if (typeof entry.releaseRepo === 'string' && entry.releaseRepo.trim()) {
-        repos.add(entry.releaseRepo.trim());
-      }
-
-      if (Array.isArray(entry.items)) {
-        collect(entry.items);
-      }
+  for (const entry of entries) {
+    if (typeof entry?.releaseRepo === 'string' && entry.releaseRepo.trim()) {
+      repos.add(entry.releaseRepo.trim());
     }
   }
 
-  collect(projects);
-  return Array.from(repos);
+  return repos;
 }
 
 function isReleaseSnapshot(value) {
@@ -95,10 +85,15 @@ async function main() {
     throw new Error('projects.json must contain an array');
   }
 
+  const catalog = await readJson(catalogPath);
+  if (!Array.isArray(catalog)) {
+    throw new Error('dictionaries/catalog.json must contain an array');
+  }
+
   const previousReleases = await readJson(releasesPath, {});
   const nextReleases = {};
 
-  for (const repo of releaseReposFromProjects(projects)) {
+  for (const repo of releaseReposFromEntries([...projects, ...catalog])) {
     try {
       const release = await fetchLatestRelease(repo);
       nextReleases[repo] = isSameReleaseSnapshot(previousReleases[repo], release)
