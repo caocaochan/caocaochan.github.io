@@ -394,12 +394,33 @@ a:focus-visible, input:focus-visible {
   font: 1.35rem/1 var(--cjk);
 }
 
-.card-kind {
-  margin: 0 0 0.15rem;
+.card-classification {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.5rem;
+  margin: 0 0 0.3rem;
   color: var(--section-accent);
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.3;
+}
+
+.card-definition {
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--surface-raised);
+  border-radius: 0.35rem;
+  background: var(--surface);
+  color: var(--subtext);
+}
+
+.card-definition[data-type="bilingual"],
+.card-definition[data-type="both"] {
+  color: var(--teal);
+}
+
+.card-definition:empty {
+  display: none;
 }
 
 .card-title {

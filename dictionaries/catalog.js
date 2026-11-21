@@ -8,6 +8,12 @@ const toolbar = document.getElementById('catalog-toolbar');
 const search = document.getElementById('dictionary-search');
 const status = document.getElementById('catalog-status');
 const template = document.getElementById('dictionary-card');
+const definitionLabels = {
+  monolingual: 'Monolingual',
+  bilingual: 'Bilingual',
+  both: 'Monolingual + bilingual',
+  frequency: 'Frequency only'
+};
 
 async function fetchJson(url) {
   const response = await fetch(url, { cache: 'no-cache' });
@@ -34,6 +40,9 @@ function renderCard(dictionary, release) {
   mark.lang = dictionary.lang;
   card.querySelector('.card-title').textContent = dictionary.title;
   card.querySelector('.card-kind').textContent = dictionary.kind;
+  const definition = card.querySelector('.card-definition');
+  definition.textContent = definitionLabels[dictionary.definitionType] ?? '';
+  definition.dataset.type = dictionary.definitionType ?? '';
   card.querySelector('.card-description').textContent = dictionary.description;
 
   const subtitle = card.querySelector('.card-subtitle');
@@ -109,6 +118,7 @@ async function loadCatalog() {
         dictionary.title,
         dictionary.subtitle,
         dictionary.kind,
+        definitionLabels[dictionary.definitionType],
         dictionary.description,
         dictionary.releaseRepo,
         ...dictionary.downloads.map(download => download.label)

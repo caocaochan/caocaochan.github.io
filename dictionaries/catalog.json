@@ -2,6 +2,7 @@
   {
     "id": "hanyu-da-cidian",
     "category": "reference",
+    "definitionType": "monolingual",
     "mark": "典",
     "kind": "Comprehensive dictionary",
     "title": "Hanyu Da Cidian",
@@ -24,6 +25,7 @@
   {
     "id": "xiandai-hanyu-da-cidian",
     "category": "reference",
+    "definitionType": "monolingual",
     "mark": "語",
     "kind": "Modern Chinese",
     "title": "Xiandai Hanyu Da Cidian",
@@ -42,6 +44,7 @@
   {
     "id": "hanyu-chengyu-yuanliu",
     "category": "reference",
+    "definitionType": "monolingual",
     "mark": "源",
     "kind": "Idioms & origins",
     "title": "Hanyu Chengyu Yuanliu",
@@ -60,6 +63,7 @@
   {
     "id": "xinhua-chengyu",
     "category": "reference",
+    "definitionType": "monolingual",
     "mark": "成",
     "kind": "Idioms",
     "title": "Xinhua Chengyu Dictionary",
@@ -78,6 +82,7 @@
   {
     "id": "mandarin-collocations",
     "category": "reference",
+    "definitionType": "monolingual",
     "mark": "搭",
     "kind": "Word combinations",
     "title": "Mandarin Collocations",
@@ -95,6 +100,7 @@
   {
     "id": "naer-terminology",
     "category": "reference",
+    "definitionType": "bilingual",
     "mark": "詞",
     "kind": "Chinese–English terminology",
     "title": "NAER Terminology",
@@ -113,6 +119,7 @@
   {
     "id": "chinese-wikipedia",
     "category": "culture",
+    "definitionType": "monolingual",
     "mark": "維",
     "kind": "Encyclopedia",
     "title": "Chinese Wikipedia",
@@ -130,6 +137,7 @@
   {
     "id": "moegirlpedia",
     "category": "culture",
+    "definitionType": "monolingual",
     "mark": "萌",
     "kind": "Anime, games & internet culture",
     "title": "Moegirlpedia",
@@ -148,6 +156,7 @@
   {
     "id": "bilibili-slang",
     "category": "culture",
+    "definitionType": "bilingual",
     "mark": "梗",
     "kind": "Chinese–English slang",
     "title": "Bilibili Slang",
@@ -177,6 +186,7 @@
   {
     "id": "genshin-impact",
     "category": "culture",
+    "definitionType": "both",
     "mark": "原",
     "kind": "Game terminology",
     "title": "Genshin Impact",
@@ -199,6 +209,7 @@
   {
     "id": "cbdb",
     "category": "culture",
+    "definitionType": "monolingual",
     "mark": "史",
     "kind": "Historical Chinese names",
     "title": "China Biographical Database",
@@ -217,6 +228,7 @@
   {
     "id": "novel-names",
     "category": "culture",
+    "definitionType": "monolingual",
     "mark": "名",
     "kind": "Web novel proper names",
     "title": "NovelNames",
@@ -234,6 +246,7 @@
   {
     "id": "bilibili-frequency",
     "category": "frequency",
+    "definitionType": "frequency",
     "mark": "频",
     "kind": "Chinese · Comments",
     "title": "Bilibili Frequency",
@@ -255,6 +268,7 @@
   {
     "id": "danmei-frequency",
     "category": "frequency",
+    "definitionType": "frequency",
     "mark": "耽",
     "kind": "Chinese · Danmei",
     "title": "Danmei Frequency",
@@ -276,6 +290,7 @@
   {
     "id": "web-novel-frequency",
     "category": "frequency",
+    "definitionType": "frequency",
     "mark": "文",
     "kind": "Chinese · Web novels",
     "title": "Web Novel Frequency",
@@ -293,6 +308,7 @@
   {
     "id": "shiberu-korean-frequency",
     "category": "frequency",
+    "definitionType": "frequency",
     "mark": "한",
     "kind": "Korean · Word frequency",
     "title": "Shiberu Korean Frequency",
