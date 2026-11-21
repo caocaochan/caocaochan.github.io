@@ -1,22 +1,5 @@
 [
   {
-    "id": "megadict",
-    "category": "reference",
-    "mark": "集",
-    "kind": "Combined Chinese dictionary",
-    "title": "Megadict",
-    "lang": "zh-Hans",
-    "description": "Look up modern and literary Chinese, idioms, slang, and names with one download. Each definition shows which dictionary it comes from.",
-    "url": "https://github.com/caocaochan/Megadict",
-    "releaseRepo": "caocaochan/Megadict",
-    "downloads": [
-      {
-        "label": "Download ZIP",
-        "url": "https://github.com/caocaochan/Megadict/releases/latest/download/Megadict.zip"
-      }
-    ]
-  },
-  {
     "id": "hanyu-da-cidian",
     "category": "reference",
     "mark": "典",
