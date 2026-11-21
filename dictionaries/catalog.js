@@ -55,7 +55,7 @@ function renderCard(dictionary, release) {
   meta.append(link('Source', dictionary.url, dictionary.title));
   meta.append(link(
     release?.tagName || 'Latest release',
-    release?.url || `${dictionary.url}/releases/latest`,
+    `${dictionary.url}/releases/latest`,
     dictionary.title
   ));
   return card;

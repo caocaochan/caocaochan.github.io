@@ -1,5 +1,22 @@
 [
   {
+    "id": "megadict",
+    "category": "reference",
+    "mark": "集",
+    "kind": "Combined Chinese dictionary",
+    "title": "Megadict",
+    "lang": "zh-Hans",
+    "description": "Look up modern and literary Chinese, idioms, slang, and names with one download. Each definition shows which dictionary it comes from.",
+    "url": "https://github.com/caocaochan/Megadict",
+    "releaseRepo": "caocaochan/Megadict",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/Megadict/releases/latest/download/Megadict.zip"
+      }
+    ]
+  },
+  {
     "id": "hanyu-da-cidian",
     "category": "reference",
     "mark": "典",
@@ -7,7 +24,7 @@
     "title": "Hanyu Da Cidian",
     "subtitle": "漢語大詞典 七訂",
     "lang": "zh-Hant",
-    "description": "The seventh revised edition of the Hanyu Da Cidian. Normalized Pinyin works with Yomitan and Lapis tone coloring, and usage examples can be expanded inside an entry.",
+    "description": "Look up rare words, older meanings, and literary expressions. Both editions include definitions and Pinyin. Choose Full for usage examples and illustrations.",
     "url": "https://github.com/caocaochan/hydcd-yomitan",
     "releaseRepo": "caocaochan/hydcd-yomitan",
     "downloads": [
@@ -29,7 +46,7 @@
     "title": "Xiandai Hanyu Da Cidian",
     "subtitle": "现代汉语大词典",
     "lang": "zh-Hans",
-    "description": "A text-only edition with Pinyin, usage examples, variant headwords, and links between related entries.",
+    "description": "Look up modern Chinese words, check their pronunciation in Pinyin, and see how they’re used. Entries help you recognize alternate spellings and find related words.",
     "url": "https://github.com/caocaochan/xhdcd-yomitan",
     "releaseRepo": "caocaochan/xhdcd-yomitan",
     "downloads": [
@@ -47,7 +64,7 @@
     "title": "Hanyu Chengyu Yuanliu",
     "subtitle": "汉语成语源流大辞典",
     "lang": "zh-Hans",
-    "description": "A reference for Chinese idioms and their origins, with collapsible examples and lookup in Simplified and Traditional Chinese.",
+    "description": "Find out where a Chinese idiom comes from and how it’s used. The original story or meaning can help you remember an expression that’s hard to guess from its characters.",
     "url": "https://github.com/caocaochan/chengyu-yomitan",
     "releaseRepo": "caocaochan/chengyu-yomitan",
     "downloads": [
@@ -65,7 +82,7 @@
     "title": "Xinhua Chengyu Dictionary",
     "subtitle": "新华成语大词典",
     "lang": "zh-Hans",
-    "description": "Xinhua’s Chinese idiom dictionary, formatted in the style of the Hanyu Da Cidian port, with collapsible examples and lookup in both scripts.",
+    "description": "Look up unfamiliar Chinese idioms as you read. Check the meaning and see examples of how to use the expression. Search in Simplified or Traditional Chinese.",
     "url": "https://github.com/caocaochan/chengyu-yomitan",
     "releaseRepo": "caocaochan/chengyu-yomitan",
     "downloads": [
@@ -82,7 +99,7 @@
     "kind": "Word combinations",
     "title": "Mandarin Collocations",
     "lang": "zh-Hans",
-    "description": "Find which objects go with a verb, or which verbs and modifiers go with a noun. Works in both directions and with Simplified and Traditional headwords.",
+    "description": "Find words that sound natural together. Start with a verb to see what it acts on, or a noun to find verbs and describing words that go with it. Results appear in Traditional Chinese.",
     "url": "https://github.com/caocaochan/mandarin-collocations",
     "releaseRepo": "caocaochan/mandarin-collocations",
     "downloads": [
@@ -100,7 +117,7 @@
     "title": "NAER Terminology",
     "subtitle": "樂詞網",
     "lang": "zh-Hant",
-    "description": "Technical, academic, and official terms from Taiwan’s NAER, with subject labels, mainland and Taiwan equivalents, and lookup in both scripts.",
+    "description": "Find English equivalents for specialist Chinese terms in subjects like medicine, law, and engineering. Compare the terms used in Taiwan and mainland China where both are listed.",
     "url": "https://github.com/caocaochan/naer-yomitan",
     "releaseRepo": "caocaochan/naer-yomitan",
     "downloads": [
@@ -117,7 +134,7 @@
     "kind": "Encyclopedia",
     "title": "Chinese Wikipedia",
     "lang": "zh-Hant",
-    "description": "Short Simplified Chinese definitions drawn from article leads, covering about 2.1 million titles and redirects. Useful for people, locations, and works outside general dictionaries. Rebuilt monthly.",
+    "description": "Identify unfamiliar people, places, organizations, and titles as you read. Short explanations in Simplified Chinese give you enough context to keep going.",
     "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary",
     "releaseRepo": "caocaochan/chinese-wikipedia-dictionary",
     "downloads": [
@@ -135,7 +152,7 @@
     "title": "Moegirlpedia",
     "subtitle": "萌娘百科",
     "lang": "zh-Hans",
-    "description": "Lead summaries from Moegirlpedia for looking up anime, games, characters, and Chinese internet culture. Rebuilt weekly.",
+    "description": "Look up characters, anime titles, games, and fandom terms you encounter in Chinese. Read a short introduction from Moegirlpedia.",
     "url": "https://github.com/caocaochan/moegirl-yomitan",
     "releaseRepo": "caocaochan/moegirl-yomitan",
     "downloads": [
@@ -152,7 +169,7 @@
     "kind": "Chinese–English slang",
     "title": "Bilibili Slang",
     "lang": "zh-Hans",
-    "description": "English glosses for slang, memes, fandom and gaming terms from Bilibili comments, plus web novel and danmei vocabulary.",
+    "description": "Find English meanings for slang, memes, and fandom expressions from Bilibili comments, plus vocabulary you’ll meet in Chinese web novels, including danmei.",
     "url": "https://github.com/caocaochan/bilibili-slang-dictionary",
     "releaseRepo": "caocaochan/bilibili-slang-dictionary",
     "downloads": [
@@ -163,6 +180,14 @@
       {
         "label": "MDict MDX",
         "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/latest/download/bilibili_slang.mdx"
+      },
+      {
+        "label": "StarDict ZIP",
+        "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/latest/download/bilibili_slang_boox.zip"
+      },
+      {
+        "label": "Pleco TXT",
+        "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/latest/download/bilibili_slang_pleco.txt"
       }
     ]
   },
@@ -174,7 +199,7 @@
     "title": "Genshin Impact",
     "subtitle": "原神",
     "lang": "zh-Hans",
-    "description": "Characters, places, enemies, items, talents, and quests drawn from the game data, with separate Chinese and English definition editions.",
+    "description": "Recognize characters, places, quests, and items while playing or reading about Genshin Impact in Chinese. Choose Chinese definitions for immersion or English definitions for quick reference.",
     "url": "https://github.com/caocaochan/genshin-yomitan",
     "releaseRepo": "caocaochan/genshin-yomitan",
     "downloads": [
@@ -189,13 +214,31 @@
     ]
   },
   {
+    "id": "cbdb",
+    "category": "culture",
+    "mark": "史",
+    "kind": "Historical Chinese names",
+    "title": "China Biographical Database",
+    "subtitle": "CBDB 人物",
+    "lang": "zh-Hant",
+    "description": "Identify historical figures by their personal names, courtesy names, or aliases. See available dates, dynasty, and place, then follow the link to the full CBDB profile.",
+    "url": "https://github.com/caocaochan/cbdb-yomitan",
+    "releaseRepo": "caocaochan/cbdb-yomitan",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/cbdb-yomitan/releases/latest/download/CBDB-Yomitan.zip"
+      }
+    ]
+  },
+  {
     "id": "novel-names",
     "category": "culture",
     "mark": "名",
     "kind": "Web novel proper names",
     "title": "NovelNames",
     "lang": "zh-Hans",
-    "description": "People, places, and organizations from 9,812 Chinese web novels, ranked by mentions per 100,000 characters. Entries include Pinyin and the novels each name appears in.",
+    "description": "Look up names of people, places, and organizations in Chinese web novels. Check the Pinyin and see which novels each name appears in.",
     "url": "https://github.com/caocaochan/NovelNames",
     "releaseRepo": "caocaochan/NovelNames",
     "downloads": [
@@ -212,7 +255,7 @@
     "kind": "Chinese · Comments",
     "title": "Bilibili Frequency",
     "lang": "zh-Hans",
-    "description": "Chinese word frequencies from 2.29 billion Bilibili comments. Choose between the full archive and Bilibili Small.",
+    "description": "See which words are most common in Bilibili comments. Use Full for the broadest coverage or Small for words found in dictionaries, with both Simplified and Traditional spellings.",
     "url": "https://github.com/caocaochan/yomitan-frequency-dicts",
     "releaseRepo": "caocaochan/yomitan-frequency-dicts",
     "downloads": [
@@ -233,7 +276,7 @@
     "kind": "Chinese · Danmei",
     "title": "Danmei Frequency",
     "lang": "zh-Hans",
-    "description": "Word frequencies from 2,047 danmei novels. The Danmei Opt edition uses LTP segmentation and dictionary headword matching.",
+    "description": "Prioritize words you’re likely to meet in danmei novels. Danmei gives you broader coverage, and Danmei Opt focuses on words you can look up in a dictionary.",
     "url": "https://github.com/caocaochan/yomitan-frequency-dicts",
     "releaseRepo": "caocaochan/yomitan-frequency-dicts",
     "downloads": [
@@ -254,7 +297,7 @@
     "kind": "Chinese · Web novels",
     "title": "Web Novel Frequency",
     "lang": "zh-Hans",
-    "description": "Word frequencies from 8,675 general Chinese web novels, using LTP segmentation and dictionary headword matching.",
+    "description": "See how common a word is across Chinese web fiction. Use the rankings to decide which words to learn first when reading across genres.",
     "url": "https://github.com/caocaochan/yomitan-frequency-dicts",
     "releaseRepo": "caocaochan/yomitan-frequency-dicts",
     "downloads": [
@@ -271,7 +314,7 @@
     "kind": "Korean · Word frequency",
     "title": "Shiberu Korean Frequency",
     "lang": "ko",
-    "description": "Shiberu’s Korean frequency list, with 80,000 words in Yomitan format.",
+    "description": "See which Korean words are most common across websites, comments, and subtitles. Use the rankings to decide which lookups are worth turning into flashcards.",
     "url": "https://github.com/caocaochan/shiberu-yomitan",
     "releaseRepo": "caocaochan/shiberu-yomitan",
     "downloads": [
