@@ -8,6 +8,12 @@ const toolbar = document.getElementById('catalog-toolbar');
 const search = document.getElementById('dictionary-search');
 const status = document.getElementById('catalog-status');
 const template = document.getElementById('dictionary-card');
+const exampleDialog = document.getElementById('example-dialog');
+const exampleDictionary = document.getElementById('example-dictionary');
+const exampleTerm = document.getElementById('example-term');
+const exampleReading = document.getElementById('example-reading');
+const exampleFields = document.getElementById('example-fields');
+const exampleSource = document.getElementById('example-source');
 const definitionLabels = {
   monolingual: 'Monolingual',
   bilingual: 'Bilingual',
@@ -30,6 +36,43 @@ function link(text, url, dictionaryTitle) {
   element.setAttribute('aria-label', `${text} · ${dictionaryTitle}`);
   return element;
 }
+
+function showExample(dictionary) {
+  const { example } = dictionary;
+  exampleDialog.dataset.category = dictionary.category;
+  exampleDictionary.textContent = dictionary.title;
+  exampleTerm.textContent = example.term;
+  exampleTerm.lang = example.lang ?? dictionary.lang;
+  exampleReading.textContent = example.reading ?? '';
+  exampleReading.hidden = !example.reading;
+
+  exampleFields.replaceChildren(...example.fields.map(field => {
+    const row = document.createElement('div');
+    const label = document.createElement('dt');
+    const value = document.createElement('dd');
+    label.textContent = field.label;
+    value.textContent = field.text;
+    value.lang = field.lang ?? exampleTerm.lang;
+    row.append(label, value);
+    return row;
+  }));
+
+  exampleSource.hidden = !example.source;
+  if (example.source) {
+    exampleSource.textContent = example.source.label;
+    exampleSource.href = example.source.url;
+  }
+  exampleDialog.showModal();
+}
+
+exampleDialog.addEventListener('click', event => {
+  if (event.target !== exampleDialog) return;
+  const { top, right, bottom, left } = exampleDialog.getBoundingClientRect();
+  const { clientX, clientY } = event;
+  if (clientX < left || clientX > right || clientY < top || clientY > bottom) {
+    exampleDialog.close();
+  }
+});
 
 function renderCard(dictionary, release) {
   const card = template.content.firstElementChild.cloneNode(true);
@@ -60,13 +103,20 @@ function renderCard(dictionary, release) {
     downloads.append(action);
   }
 
-  const meta = card.querySelector('.card-meta');
+  const meta = card.querySelector('.card-links');
   meta.append(link('Source', dictionary.url, dictionary.title));
   meta.append(link(
     release?.tagName || 'Latest release',
     `${dictionary.url}/releases/latest`,
     dictionary.title
   ));
+
+  if (dictionary.example) {
+    const exampleButton = card.querySelector('.example-trigger');
+    exampleButton.hidden = false;
+    exampleButton.setAttribute('aria-label', `Example · ${dictionary.title}`);
+    exampleButton.addEventListener('click', () => showExample(dictionary));
+  }
   return card;
 }
 

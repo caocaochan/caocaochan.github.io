@@ -99,6 +99,21 @@
     <a href="https://github.com/caocaochan">GitHub</a>
   </footer>
 
+  <dialog class="example-dialog" id="example-dialog" aria-labelledby="example-term" aria-describedby="example-dictionary">
+    <div class="example-panel">
+      <header class="example-header">
+        <p id="example-dictionary"></p>
+        <form method="dialog">
+          <button class="example-close" type="submit" autofocus>Close</button>
+        </form>
+      </header>
+      <h2 id="example-term"></h2>
+      <p id="example-reading" class="example-reading" lang="zh-Latn-pinyin"></p>
+      <dl id="example-fields" class="example-fields"></dl>
+      <a id="example-source" class="example-source" hidden></a>
+    </div>
+  </dialog>
+
   <template id="dictionary-card">
     <article class="dictionary-card">
       <header class="card-heading">
@@ -114,7 +129,10 @@
       </header>
       <p class="card-description"></p>
       <div class="card-downloads"></div>
-      <footer class="card-meta"></footer>
+      <footer class="card-meta">
+        <div class="card-links"></div>
+        <button class="example-trigger" type="button" aria-haspopup="dialog" hidden>Example</button>
+      </footer>
     </article>
   </template>
 </body>

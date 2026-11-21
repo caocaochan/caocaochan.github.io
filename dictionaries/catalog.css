@@ -22,6 +22,9 @@
 *, *::before, *::after { box-sizing: border-box; }
 [hidden] { display: none !important; }
 
+html { scrollbar-gutter: stable; }
+html:has(.example-dialog[open]) { overflow: hidden; }
+
 body {
   margin: 0;
   background: var(--base);
@@ -31,7 +34,7 @@ body {
 
 a { color: inherit; }
 
-a:focus-visible, input:focus-visible {
+a:focus-visible, input:focus-visible, button:focus-visible {
   outline: 2px solid var(--lavender);
   outline-offset: 4px;
 }
@@ -336,7 +339,7 @@ a:focus-visible, input:focus-visible {
   margin-top: clamp(2.5rem, 4vw, 4rem);
 }
 
-#culture { --section-accent: var(--peach); }
+#culture, .example-dialog[data-category="culture"] { --section-accent: var(--peach); }
 #frequency { --section-accent: var(--teal); }
 
 .collection-heading {
@@ -458,9 +461,9 @@ a:focus-visible, input:focus-visible {
 
 .card-meta {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 0.8rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.55rem;
   margin-top: 1rem;
   padding-top: 0.8rem;
   border-top: 1px solid var(--surface);
@@ -469,14 +472,114 @@ a:focus-visible, input:focus-visible {
   overflow-wrap: anywhere;
 }
 
-.card-meta a, .install a {
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.8rem;
+  min-width: 0;
+}
+
+.card-meta a, .install a, .example-source {
   text-decoration-color: var(--surface-raised);
   text-underline-offset: 0.2em;
 }
 
-.card-meta a:hover, .install a:hover {
+.card-meta a:hover, .install a:hover, .example-source:hover {
   color: var(--lavender);
   text-decoration-color: currentColor;
+}
+
+.example-trigger, .example-close {
+  flex: none;
+  min-height: 2.25rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--surface-raised);
+  border-radius: 0.45rem;
+  background: transparent;
+  color: var(--section-accent);
+  font: 600 0.875rem/1.3 var(--sans);
+  cursor: pointer;
+}
+
+.example-trigger:hover, .example-close:hover {
+  border-color: var(--section-accent);
+  background: var(--surface);
+}
+
+.example-dialog {
+  --section-accent: var(--lavender);
+  width: min(35rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  border: 1px solid var(--surface-raised);
+  border-top: 3px solid var(--section-accent);
+  border-radius: 1rem;
+  background: var(--mantle);
+  color: var(--text);
+  box-shadow: 0 1.5rem 5rem #11111bb3;
+  overscroll-behavior: contain;
+}
+
+.example-dialog::backdrop { background: #11111bba; }
+
+.example-panel { padding: clamp(1.25rem, 4vw, 2rem); }
+
+.example-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 0.75rem;
+}
+
+.example-header p {
+  margin: 0.35rem 0 0;
+  color: var(--section-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+#example-term {
+  margin: 0.6rem 0 0;
+  color: var(--rosewater);
+  font: 400 clamp(2rem, 7vw, 3.3rem)/1.18 var(--cjk);
+  overflow-wrap: anywhere;
+}
+
+.example-reading {
+  margin: 0.25rem 0 0;
+  color: var(--subtext);
+  font-size: 1.15rem;
+}
+
+.example-fields {
+  margin: 1.25rem 0 0;
+  padding: 0.15rem 1rem;
+  border: 1px solid var(--surface-raised);
+  border-radius: 0.65rem;
+  background: var(--base);
+}
+
+.example-fields > div { padding-block: 0.7rem; }
+.example-fields > div + div { border-top: 1px solid var(--surface); }
+
+.example-fields dt {
+  color: var(--section-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.example-fields dd {
+  margin: 0.15rem 0 0;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.example-source {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: var(--subtext);
+  font-size: 0.875rem;
 }
 
 .install {

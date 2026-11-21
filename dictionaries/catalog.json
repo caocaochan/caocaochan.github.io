@@ -20,7 +20,27 @@
         "label": "Light ZIP",
         "url": "https://github.com/caocaochan/hydcd-yomitan/releases/latest/download/hydcd-qiding-yomitan-light.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "斟酌",
+      "reading": "zhēn zhuó",
+      "lang": "zh-Hans",
+      "fields": [
+        {
+          "label": "Older meaning",
+          "text": "倒酒；注酒。"
+        },
+        {
+          "label": "Later meaning",
+          "text": "故凡事反复考虑、择善而定，亦称斟酌。"
+        },
+        {
+          "label": "Quotation · 《三國志・諸葛亮傳》",
+          "text": "至於斟酌損益，進盡忠言",
+          "lang": "zh-Hant"
+        }
+      ]
+    }
   },
   {
     "id": "xiandai-hanyu-da-cidian",
@@ -39,7 +59,21 @@
         "label": "Download ZIP",
         "url": "https://github.com/caocaochan/xhdcd-yomitan/releases/latest/download/xhdcd-yomitan-text.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "琢磨",
+      "reading": "zuó mo / zhuó mó",
+      "fields": [
+        {
+          "label": "zuó mo",
+          "text": "思索，考虑。"
+        },
+        {
+          "label": "zhuó mó",
+          "text": "雕刻和磨治玉、石。"
+        }
+      ]
+    }
   },
   {
     "id": "hanyu-chengyu-yuanliu",
@@ -58,7 +92,21 @@
         "label": "Download ZIP",
         "url": "https://github.com/caocaochan/chengyu-yomitan/releases/latest/download/hycyyl-yomitan.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "南柯一梦",
+      "reading": "Nán kē yī mèng",
+      "fields": [
+        {
+          "label": "Meaning",
+          "text": "比喻荣枯得失无常，虚幻不实；也泛指一场梦。"
+        },
+        {
+          "label": "Origin · 《南柯太守传》",
+          "text": "梦至此而醒，发现庭前槐树下有一蚁洞，即梦中的槐安国都；南柯郡是槐树南枝之下的另一蚁穴。"
+        }
+      ]
+    }
   },
   {
     "id": "xinhua-chengyu",
@@ -77,7 +125,25 @@
         "label": "Download ZIP",
         "url": "https://github.com/caocaochan/chengyu-yomitan/releases/latest/download/xhcycd-yomitan.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "画蛇添足",
+      "reading": "huà shé tiān zú",
+      "fields": [
+        {
+          "label": "Meaning",
+          "text": "多此一举，弄巧成拙。"
+        },
+        {
+          "label": "Usage note",
+          "text": "含贬义。"
+        },
+        {
+          "label": "Quotation · 《三国演义》",
+          "text": "将军功绩已成，威声大震，可以止矣。今若前进，倘不如意，正如‘画蛇添足’也。"
+        }
+      ]
+    }
   },
   {
     "id": "mandarin-collocations",
@@ -95,7 +161,22 @@
         "label": "Download ZIP",
         "url": "https://github.com/caocaochan/mandarin-collocations/releases/latest/download/mandarin-collocations.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "作業",
+      "reading": "zuòyè",
+      "lang": "zh-Hant",
+      "fields": [
+        {
+          "label": "Homework",
+          "text": "寫作業、交作業、改作業、完成作業"
+        },
+        {
+          "label": "Work or operations",
+          "text": "進行作業、執行作業、中止作業、恢復作業"
+        }
+      ]
+    }
   },
   {
     "id": "naer-terminology",
@@ -114,7 +195,23 @@
         "label": "Download ZIP",
         "url": "https://github.com/caocaochan/naer-yomitan/releases/latest/download/naer_terms.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "軟體",
+      "reading": "ruǎntǐ",
+      "fields": [
+        {
+          "label": "English",
+          "text": "software",
+          "lang": "en"
+        },
+        {
+          "label": "Mainland Chinese equivalent",
+          "text": "软件",
+          "lang": "zh-Hans"
+        }
+      ]
+    }
   },
   {
     "id": "chinese-wikipedia",
@@ -132,7 +229,22 @@
         "label": "Download ZIP",
         "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary/releases/latest/download/wikipedia_zh.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "莫高窟",
+      "reading": "mògāokū",
+      "lang": "zh-Hans",
+      "fields": [
+        {
+          "label": "Article excerpt",
+          "text": "洞窟分布高低错落、鳞次栉比，上下最多有五层，以精美的壁画和塑像闻名于世。"
+        }
+      ],
+      "source": {
+        "label": "Wikipedia contributors · CC BY-SA 4.0",
+        "url": "https://zh.wikipedia.org/zh-hans/莫高窟"
+      }
+    }
   },
   {
     "id": "moegirlpedia",
@@ -151,7 +263,21 @@
         "label": "Download ZIP",
         "url": "https://github.com/caocaochan/moegirl-yomitan/releases/latest/download/moegirl-yomitan.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "弹幕",
+      "reading": "dàn mù",
+      "fields": [
+        {
+          "label": "Article excerpt",
+          "text": "当用户在作品中发表评论，这些评论会作为流动字幕在视频中飞过并被其他用户看到。"
+        }
+      ],
+      "source": {
+        "label": "Moegirlpedia contributors",
+        "url": "https://mzh.moegirl.org.cn/%E5%BC%B9%E5%B9%95"
+      }
+    }
   },
   {
     "id": "bilibili-slang",
@@ -181,7 +307,23 @@
         "label": "Pleco TXT",
         "url": "https://github.com/caocaochan/bilibili-slang-dictionary/releases/latest/download/bilibili_slang_pleco.txt"
       }
-    ]
+    ],
+    "example": {
+      "term": "三连",
+      "reading": "sānlián",
+      "fields": [
+        {
+          "label": "On Bilibili",
+          "text": "to like, give coins to and favorite a video (Bilibili, short for 一键三连)",
+          "lang": "en"
+        },
+        {
+          "label": "General meaning",
+          "text": "three in a row (three consecutive wins, hits, actions etc.)",
+          "lang": "en"
+        }
+      ]
+    }
   },
   {
     "id": "genshin-impact",
@@ -204,7 +346,28 @@
         "label": "English ZIP",
         "url": "https://github.com/caocaochan/genshin-yomitan/releases/latest/download/genshin_en.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "胡桃",
+      "reading": "hútáo",
+      "fields": [
+        {
+          "label": "English edition",
+          "text": "Hu Tao",
+          "lang": "en"
+        },
+        {
+          "label": "Character details",
+          "text": "Fragrance in Thaw · Pyro · Polearm · Wangsheng Funeral Parlor · 5★",
+          "lang": "en"
+        },
+        {
+          "label": "Description",
+          "text": "The 77th Director of the Wangsheng Funeral Parlor. She took over the business at a rather young age.",
+          "lang": "en"
+        }
+      ]
+    }
   },
   {
     "id": "cbdb",
@@ -223,17 +386,43 @@
         "label": "Download ZIP",
         "url": "https://github.com/caocaochan/cbdb-yomitan/releases/latest/download/CBDB-Yomitan.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "東坡居士",
+      "reading": "Dōngpō jūshì",
+      "fields": [
+        {
+          "label": "Person",
+          "text": "蘇軾"
+        },
+        {
+          "label": "Dynasty and dates",
+          "text": "宋 · 1036–1101"
+        },
+        {
+          "label": "Native place",
+          "text": "眉山"
+        },
+        {
+          "label": "Courtesy name",
+          "text": "子瞻"
+        }
+      ],
+      "source": {
+        "label": "China Biographical Database profile",
+        "url": "https://cbdb.fas.harvard.edu/cbdbapi/person.php?id=3767"
+      }
+    }
   },
   {
     "id": "novel-names",
     "category": "culture",
-    "definitionType": "monolingual",
+    "definitionType": "bilingual",
     "mark": "名",
     "kind": "Web novel proper names",
     "title": "NovelNames",
     "lang": "zh-Hans",
-    "description": "Look up names of people, places, and organizations in Chinese web novels. Check the Pinyin and see which novels each name appears in.",
+    "description": "Look up names of people, places, and organizations in Chinese web novels. Check the Pinyin, see which novels each name appears in, and read an English description where available.",
     "url": "https://github.com/caocaochan/NovelNames",
     "releaseRepo": "caocaochan/NovelNames",
     "downloads": [
@@ -241,7 +430,22 @@
         "label": "Download ZIP",
         "url": "https://github.com/caocaochan/NovelNames/releases/latest/download/NovelNames.zip"
       }
-    ]
+    ],
+    "example": {
+      "term": "谢怜",
+      "reading": "xiè lián",
+      "fields": [
+        {
+          "label": "Novel and author",
+          "text": "《天官赐福》 · 墨香铜臭"
+        },
+        {
+          "label": "Character",
+          "text": "谢怜 is the former crown prince of 仙乐, who has ascended to heaven again after a long interval.",
+          "lang": "en"
+        }
+      ]
+    }
   },
   {
     "id": "bilibili-frequency",
