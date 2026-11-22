@@ -9,6 +9,21 @@
     "url": "https://github.com/caocaochan/Danmei5k/releases/tag/v1.0",
     "fetchedAt": "2026-11-12T10:15:38.283Z"
   },
+  "caocaochan/CalibreAnalyzer": {
+    "tagName": "v2026.05.07.1",
+    "url": "https://github.com/caocaochan/CalibreAnalyzer/releases/tag/v2026.05.07.1",
+    "fetchedAt": "2026-05-29T00:00:00.000Z"
+  },
+  "caocaochan/hanstat": {
+    "tagName": "2026.11.21.00",
+    "url": "https://github.com/caocaochan/hanstat/releases/tag/2026.11.21.00",
+    "fetchedAt": "2026-11-21T18:37:36.106Z"
+  },
+  "caocaochan/anki-ui-fonts": {
+    "tagName": "v1.1.0",
+    "url": "https://github.com/caocaochan/anki-ui-fonts/releases/tag/v1.1.0",
+    "fetchedAt": "2026-11-12T10:15:40.921Z"
+  },
   "caocaochan/hydcd-yomitan": {
     "tagName": "build-35110561158-1",
     "url": "https://github.com/caocaochan/hydcd-yomitan/releases/tag/build-35110561158-1",
@@ -73,20 +88,5 @@
     "tagName": "2026.10.28",
     "url": "https://github.com/caocaochan/shiberu-yomitan/releases/tag/2026.10.28",
     "fetchedAt": "2026-11-12T10:12:20.492Z"
-  },
-  "caocaochan/CalibreAnalyzer": {
-    "tagName": "v2026.05.07.1",
-    "url": "https://github.com/caocaochan/CalibreAnalyzer/releases/tag/v2026.05.07.1",
-    "fetchedAt": "2026-05-29T00:00:00.000Z"
-  },
-  "caocaochan/hanstat": {
-    "tagName": "2026.11.21.00",
-    "url": "https://github.com/caocaochan/hanstat/releases/tag/2026.11.21.00",
-    "fetchedAt": "2026-11-21T18:37:36.106Z"
-  },
-  "caocaochan/anki-ui-fonts": {
-    "tagName": "v1.1.0",
-    "url": "https://github.com/caocaochan/anki-ui-fonts/releases/tag/v1.1.0",
-    "fetchedAt": "2026-11-12T10:15:40.921Z"
   }
 }
