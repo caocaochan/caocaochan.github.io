@@ -54,6 +54,11 @@
     "url": "https://github.com/caocaochan/chinese-wikipedia-dictionary/releases/tag/2026-11-01",
     "fetchedAt": "2026-11-12T10:12:19.327Z"
   },
+  "caocaochan/places-yomitan": {
+    "tagName": "v2026.11.22.185609",
+    "url": "https://github.com/caocaochan/places-yomitan/releases/tag/v2026.11.22.185609",
+    "fetchedAt": "2026-11-22T19:11:23.599Z"
+  },
   "caocaochan/moegirl-yomitan": {
     "tagName": "2026.09.06",
     "url": "https://github.com/caocaochan/moegirl-yomitan/releases/tag/2026.09.06",

@@ -247,6 +247,46 @@
     }
   },
   {
+    "id": "chinese-place-names",
+    "category": "culture",
+    "definitionType": "monolingual",
+    "mark": "地",
+    "kind": "Place names",
+    "title": "Chinese Place Names",
+    "subtitle": "中文地名",
+    "lang": "zh-Hant",
+    "description": "Look up places in mainland China, Taiwan, Hong Kong, and Macao in Simplified or Traditional Chinese. Check Mandarin readings, see which regions a place belongs to, and find alternate names where available.",
+    "url": "https://github.com/caocaochan/places-yomitan",
+    "releaseRepo": "caocaochan/places-yomitan",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/places-yomitan/releases/latest/download/chinese-place-names-yomitan.zip"
+      }
+    ],
+    "example": {
+      "term": "朝陽區",
+      "reading": "cháo yáng qū",
+      "fields": [
+        {
+          "label": "Simplified",
+          "text": "朝阳区",
+          "lang": "zh-Hans"
+        },
+        {
+          "label": "Beijing",
+          "text": "中国大陆 › 北京市",
+          "lang": "zh-Hans"
+        },
+        {
+          "label": "Changchun",
+          "text": "中国大陆 › 吉林省 › 长春市",
+          "lang": "zh-Hans"
+        }
+      ]
+    }
+  },
+  {
     "id": "moegirlpedia",
     "category": "culture",
     "definitionType": "monolingual",
