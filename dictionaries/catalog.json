@@ -410,6 +410,53 @@
     }
   },
   {
+    "id": "pokemon",
+    "category": "culture",
+    "definitionType": "both",
+    "mark": "宝",
+    "kind": "Game terminology",
+    "title": "Pokémon",
+    "subtitle": "宝可梦",
+    "lang": "zh-Hans",
+    "description": "Recognize Pokémon, moves, abilities, and items in Simplified or Traditional Chinese. Check the Pinyin, see the English and Japanese names, read Pokédex entries in Chinese and English, and find older regional names like 比卡超.",
+    "url": "https://github.com/caocaochan/pokemon-yomitan",
+    "releaseRepo": "caocaochan/pokemon-yomitan",
+    "downloads": [
+      {
+        "label": "Download ZIP",
+        "url": "https://github.com/caocaochan/pokemon-yomitan/releases/latest/download/pokemon-zh.zip"
+      }
+    ],
+    "example": {
+      "term": "皮卡丘",
+      "reading": "pí kǎ qiū",
+      "fields": [
+        {
+          "label": "English name",
+          "text": "Pikachu",
+          "lang": "en"
+        },
+        {
+          "label": "Japanese name",
+          "text": "ピカチュウ",
+          "lang": "ja"
+        },
+        {
+          "label": "Category and type",
+          "text": "鼠宝可梦 · 电"
+        },
+        {
+          "label": "Older name",
+          "text": "比卡超（香港：羚邦、群英、無綫等）"
+        },
+        {
+          "label": "Pokédex · 朱",
+          "text": "两颊上有储存电力的囊袋。一旦生气就会把储存的电力一口气释放出来。"
+        }
+      ]
+    }
+  },
+  {
     "id": "cbdb",
     "category": "culture",
     "definitionType": "monolingual",
